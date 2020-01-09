@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Index</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/index.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/0070d8a8c5.js" crossorigin="anonymous"></script>
+	<script src="js/index.js"></script>
+</head>
+
+<body>
+	
+	<header>
+		
+		<span>
+			<i class="fas fa-cannabis"></i>
+		</span>
+
+		<i class="fas fa-fan"></i>
+
+		<span>
+			<i class="fas fa-search" onclick="buscar()"></i>
+			<i onclick="abrirMenu()" class="fas fa-ellipsis-v"></i>
+		</span>
+
+		<div id="miMenu" class="menu">
+			
+			<a href="javascript:void(0)" class="closebtn" onclick="cerrarMenu()">
+				<i class="fas fa-times"></i>
+			</a>
+
+			<ul id="listaMenu">
+				<li><a href="">Favoritos</a></li>
+				<li><a href="">Ajustes</a></li>
+				<li><a href="">Ayuda</a></li>
+				<li><a href="">Algún problema?</a></li>
+			</ul>
+
+		</div>
+
+	</header>
+
+	<div class="search">
+		<i class="fas fa-search"></i>
+
+		<form name="busqueda" action="">
+			<input name="buscar" id="buscar" type="text" placeholder="Buscar..." autofocus="" onfocusout="cerrarBuscar()" oninput="buscarNombre()">
+		</form>
+	</div>
+
+	<section class="busquedas"></section>
+
+</body>
+	
+</html>
+
+
+<!--
+		<article>
+			<figure>
+				<img src="img/margarita.jpg" alt="">
+			</figure>
+
+			<ul>
+				<li>Margarita</li>
+				<li>Bellis perennis</li>
+				<li>
+					<i class="fas fa-history"></i>
+					Hace 3 horas
+				</li>
+			</ul>
+		</article>
+
+		<article>
+			<figure>
+				<img src="img/arbol.jpg" alt="">
+			</figure>
+
+			<ul>
+				<li>Abedul</li>
+				<li>Betula</li>
+				<li>
+					<i class="fas fa-history"></i>
+					Hace 3 horas
+				</li>
+			</ul>
+		</article>
+		-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

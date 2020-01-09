@@ -1,0 +1,149 @@
+*{
+	font-family: 'Roboto', sans-serif;
+}
+html,body{
+    height: 100%;
+}
+body{
+    background-color: #fff;
+}
+a{
+	text-decoration: none;
+}
+
+/* Header */
+header{
+	background-color: #78c17d;
+	display: grid;
+	grid-template: 1fr / 1fr 1fr 1fr;
+	justify-items: center;
+	align-items: center;
+	padding: 0.5rem;
+	height: 50px;
+}
+header span:nth-child(1){
+	justify-self: flex-start;
+}
+header span:nth-child(3){
+	justify-self: flex-end;
+}
+header span:nth-child(3) i:nth-child(2){
+	padding-left: 1.5rem;
+}
+header i{
+	font-size: 2rem;
+	color: white;
+}
+header div.menu{
+	width: 0%;
+	height: 100%;
+	position: fixed;
+	z-index: 1;
+	background-color: rgba(182,246,187,0.9);
+	left: 0;
+	top: 0;
+	display: flex;
+	flex-direction: column;
+	transition: 0.5s;
+}
+header div.menu a{
+	align-self: flex-end;
+	padding: 1rem;
+}
+header div.menu a i{
+	color: black;
+	font-size: 2.5rem;
+}
+header div.menu ul{
+	display: none;
+}
+header div.menu ul li{
+	border-top: 1px solid black;
+}
+header div.menu ul li a{
+	font-size: 1.5rem;
+	color: black;
+	padding: 1rem;
+	display: block;
+	transition: 0.3s;
+}
+/* Fin Header */
+
+/* Búsqueda */
+div.search{
+	height: 50px;
+	padding: 0.5rem;
+	display: none;
+	background-color: #aaeeaf;
+	align-items: center;
+}
+div.search i{
+	color: #78c17d;
+	font-size: 1.5rem;
+}
+div.search form{
+	padding-left: 1rem;
+}
+div.search form, div.search form input{
+	width: 100%;
+	height: 100%;
+	font-size: 1.3rem;
+	background-color: #aaeeaf;
+	color: #78c17d;
+	border: 0;
+}
+/* Fin Búsqueda */
+
+/* Section */
+.busquedas article{
+	display: grid;
+	grid-template: 1fr / 130px 1fr;
+	align-items: center;
+	justify-items: center;
+	padding: 1rem 0;
+	border-bottom: 1px solid #78c17d;
+}
+.busquedas article figure{
+	height: 100px;
+	width: 100px;
+}
+.busquedas article figure img{
+	width: 100%;
+	height: 100%;
+	border-radius: 3px;
+}
+.busquedas article ul{
+	justify-self: flex-start;
+	align-self: flex-start;
+	padding-left: 1.3rem;
+}
+.busquedas article ul li{
+	padding-bottom: 0.5rem;
+	font-size: 1.2rem;
+	color: #78c17d;
+}
+/* Fin Section */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
