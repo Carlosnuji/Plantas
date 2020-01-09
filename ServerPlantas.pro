@@ -5,7 +5,8 @@ CONFIG -= qt
 
 SOURCES += \
         main.cpp \
-    planta.cpp
+    planta.cpp \
+    servidor.cpp
 
 LIBS += -pthread -lz
 
@@ -23,4 +24,5 @@ else:win32:!win32-g++:CONFIG(debug, debug|release): PRE_TARGETDEPS += $$PWD/../.
 else:unix: PRE_TARGETDEPS += $$PWD/../../websocket/lib/libixwebsocket.a
 
 HEADERS += \
-    planta.h
+    planta.h \
+    servidor.h

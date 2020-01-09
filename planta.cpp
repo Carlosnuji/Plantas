@@ -1,11 +1,10 @@
 #include "planta.h"
 
-Planta::Planta(int id, std::string nombre, std::string nombreCientifico, std::string descripcion)
+Planta::Planta(std::string nombre, std::string nombreCientifico, std::string descripcion)
 {
 
-    this->id = id;
-    this->nombre = nombre;
-    this->nombreCientifico = nombreCientifico;
-    this->descripcion = descripcion;
+    this->m_nombre = nombre;
+    this->m_nombreCientifico = nombreCientifico;
+    this->m_descripcion = descripcion;
 
 }

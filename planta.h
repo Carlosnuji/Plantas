@@ -2,6 +2,7 @@
 #define PLANTA_H
 
 #include <string>
+#include <list>
 #include "json.hpp"
 
 using JSON = nlohmann::json;
@@ -10,15 +11,19 @@ class Planta
 {
 
 public:
-    Planta(int, std::string, std::string, std::string);
+    Planta(std::string, std::string, std::string);
     JSON toJSON();
     Planta fromJSON(JSON);
+    void save();
+    void load(int);
+    void remove(int);
+    static std::list<Planta> find(std::string);
 
 private:
-    int id;
-    std::string nombre;
-    std::string nombreCientifico;
-    std::string descripcion;
+    int m_id{0};
+    std::string m_nombre{""};
+    std::string m_nombreCientifico{""};
+    std::string m_descripcion{""};
 
 };
 
