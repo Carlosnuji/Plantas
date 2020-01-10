@@ -83,7 +83,7 @@ void Servidor::nuevoMensajeJSON(const JSON &mensaje)
     else
     {
 
-        /// 3) Saber si existe action en el JSON
+        /// 2) Saber si existe action en el JSON
         if(exists(mensaje, "action"))
         {
 

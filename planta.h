@@ -3,6 +3,8 @@
 
 #include <string>
 #include <list>
+#include <QSqlQuery>
+#include <QSqlRecord>
 #include "json.hpp"
 
 using JSON = nlohmann::json;
@@ -15,9 +17,10 @@ public:
     JSON toJSON();
     Planta fromJSON(JSON);
     void save();
-    void load(int);
+    static Planta load(int);
     void remove(int);
     static std::list<Planta> find(std::string);
+    ~Planta();
 
 private:
     int m_id{0};

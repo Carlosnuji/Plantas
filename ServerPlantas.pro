@@ -1,12 +1,14 @@
 TEMPLATE = app
-CONFIG += console c++11
+CONFIG += console c++11 qt
 CONFIG -= app_bundle
-CONFIG -= qt
+
+QT       += sql
 
 SOURCES += \
         main.cpp \
     planta.cpp \
-    servidor.cpp
+    servidor.cpp \
+    conexion.cpp
 
 LIBS += -pthread -lz
 
@@ -25,4 +27,5 @@ else:unix: PRE_TARGETDEPS += $$PWD/../../websocket/lib/libixwebsocket.a
 
 HEADERS += \
     planta.h \
-    servidor.h
+    servidor.h \
+    conexion.h
