@@ -1,7 +1,6 @@
 #include "planta.h"
 #include <QVariant>
 #include <QString>
-#include <QDebug>
 
 Planta::Planta(std::string nombre, std::string nombreCientifico, std::string descripcion)
 {
@@ -12,9 +11,7 @@ Planta::Planta(std::string nombre, std::string nombreCientifico, std::string des
 
 }
 
-Planta::~Planta()
-{
-}
+Planta::~Planta(){}
 
 void Planta::save()
 {
@@ -49,6 +46,7 @@ Planta Planta::load(int id)
         QString descripcion = query.value("descripcion").toString();
 
         Planta planta(nombre.toUtf8().constData(), nombreCientifico.toUtf8().constData(), descripcion.toUtf8().constData());
+        planta.m_id = query.value("idplanta").toInt();
         return planta;
     }
 
@@ -65,6 +63,56 @@ void Planta::remove(int id)
 
 }
 
+std::list<Planta> Planta::find(std::string nombre)
+{
+
+    std::list<Planta> listaPlantas = {};
+
+    QSqlQuery query;
+    query.prepare("SELECT * FROM planta WHERE nombre LIKE :nombre");
+
+    QString  nom = QString::fromStdString(nombre);
+    query.bindValue(":nombre", QString("%%1%").arg(nom));
+
+    query.exec();
+
+    QSqlRecord rec = query.record();
+    while (query.next())
+    {
+
+        QString nombre = query.value("nombre").toString();
+        QString nombreCientifico = query.value("nombreCientifico").toString();
+        QString descripcion = query.value("descripcion").toString();
+
+        Planta planta(nombre.toUtf8().constData(), nombreCientifico.toUtf8().constData(), descripcion.toUtf8().constData());
+        planta.m_id = query.value("idplanta").toInt();
+
+        listaPlantas.push_back(planta);
+
+    }
+
+    return listaPlantas;
+
+}
+
+JSON Planta::toJSON()
+{
+
+    JSON planta;
+    planta["id"] = m_id;
+    planta["nombre"] = m_nombre;
+    planta["nombreCientifico"] = m_nombreCientifico;
+    planta["descripcion"] = m_descripcion;
+
+    return planta;
+
+}
+
+std::string Planta::getNombre(){ return m_nombre; }
+
+std::string Planta::getNombreCientifico(){ return m_nombreCientifico; }
+
+std::string Planta::getDescripcion() { return m_descripcion; }
 
 
 

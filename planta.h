@@ -21,6 +21,9 @@ public:
     void remove(int);
     static std::list<Planta> find(std::string);
     ~Planta();
+    std::string getNombre();
+    std::string getNombreCientifico();
+    std::string getDescripcion();
 
 private:
     int m_id{0};

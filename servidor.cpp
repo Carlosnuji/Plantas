@@ -43,7 +43,11 @@ int Servidor::startServidor()
                     JSON receivedObject = JSON::parse(msg->str, nullptr, false);
 
                     /// 2) Trabajar con el mensaje JSON
-                    this->nuevoMensajeJSON(receivedObject);
+                    JSON respuesta = this->nuevoMensajeJSON(receivedObject);
+
+                    /// 3) Enviar respuesta al cliente
+                    std::string respuestaCliente = respuesta.dump();
+                    webSocket->send(respuestaCliente);
 
                 }
                 else if (msg->type == ix::WebSocketMessageType::Error)
@@ -72,7 +76,7 @@ int Servidor::startServidor()
 
 }
 
-void Servidor::nuevoMensajeJSON(const JSON &mensaje)
+JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
 {
 
     /// 1) Saber si es un JSON válido
@@ -92,6 +96,22 @@ void Servidor::nuevoMensajeJSON(const JSON &mensaje)
             {
 
                 std::cout << "Devolver ultimas búsquedas" << std::endl;
+                JSON resultado;
+                resultado["id"] = mensaje["id"];
+
+                std::list<Planta> lista = Planta::find("p");
+                int contador = 0;
+                for(Planta planta : lista)
+                {
+
+                    JSON plantaJSON = planta.toJSON();
+                    resultado["resultado"][contador] = plantaJSON;
+
+                    contador++;
+
+                }
+
+                return resultado;
 
             } // end if
 
