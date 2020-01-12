@@ -18,6 +18,7 @@ void Conexion::loadProperties()
 bool Conexion::open()
 {
 
+    /// 1) Cargar propiedades
     loadProperties();
     m_db = QSqlDatabase::addDatabase("QPSQL");
     m_db.setHostName(m_hostName);
@@ -26,6 +27,8 @@ bool Conexion::open()
     m_db.setUserName(m_userName);
     m_db.setPassword(m_password);
 
+
+    /// 2) Abrir conexión
     bool ok = m_db.open();
 
     return ok;

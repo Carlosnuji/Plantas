@@ -168,13 +168,24 @@ function buscarNombre()
     
 };
 
-//Crear Usuario
+//Crear usuario
 function crearUsuario(nombre, pass, email)
 {
     
     // 1) Crear JSON que se envia al servidor
     var idMensaje = dameId();
     var obj = {action:"crearUsuario", id:idMensaje, nombre:nombre, pass:pass, email:email};
+    socket.send(JSON.stringify(obj));
+    
+}
+
+//Cargar usuario
+function cargarUsuario(idUsuario)
+{
+    
+    // 1) Crear JSON que se envia al servidor
+    var idMensaje = dameId();
+    var obj = {action:"cargarUsuario", id:idMensaje, idUsuario:idUsuario};
     socket.send(JSON.stringify(obj));
     
 }

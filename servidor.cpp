@@ -144,7 +144,7 @@ JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
             if(mensaje["action"] == "crearUsuario")
             {
 
-                std::cout << "Crear Usuario" << std::endl;
+                std::cout << "Crear usuario" << std::endl;
                 resultado["id"] = mensaje["id"];
 
                 std::string nombre = mensaje["nombre"];
@@ -154,6 +154,21 @@ JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
                 Usuario usuario(nombre, pass, email);
                 usuario.save();
 
+                JSON usuarioJSON = usuario.toJSON();
+                resultado["resultado"][0] = usuarioJSON;
+
+                return resultado;
+
+            } // end if
+
+            /// Cargar usuario
+            if(mensaje["action"] == "cargarUsuario")
+            {
+
+                std::cout << "Cargar usuario" << std::endl;
+                resultado["id"] = mensaje["id"];
+
+                Usuario usuario = Usuario::load(mensaje["idUsuario"]);
                 JSON usuarioJSON = usuario.toJSON();
                 resultado["resultado"][0] = usuarioJSON;
 
