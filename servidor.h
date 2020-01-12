@@ -7,6 +7,7 @@
 #include "ixwebsocket/IXConnectionState.h"
 #include "json.hpp"
 #include "planta.h"
+#include "usuario.h"
 
 using JSON = nlohmann::json;
 

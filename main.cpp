@@ -11,9 +11,11 @@
 int main()
 {
 
+    /// 1) Abrir conexión con la base de datos
     Conexion con;
     con.open();
 
+    /// 2) Iniciar servidor
     Servidor servidor(9990);
     return servidor.startServidor();
 

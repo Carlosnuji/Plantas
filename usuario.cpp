@@ -76,6 +76,19 @@ void Usuario::remove(int id)
 
 }
 
+JSON Usuario::toJSON()
+{
+
+    JSON usuario;
+    usuario["id"] = m_id;
+    usuario["nombre"] = m_nombre;
+    usuario["pass"] = m_password;
+    usuario["email"] = m_email;
+
+    return usuario;
+
+}
+
 std::string Usuario::getNombre(){ return m_nombre; }
 std::string Usuario::getPassword(){ return m_password; }
 std::string Usuario::getEmail(){ return m_email; }
