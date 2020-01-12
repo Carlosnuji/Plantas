@@ -37,7 +37,7 @@ function crearArticles(item)
     nombre.innerHTML = item.nombre;
     lista.appendChild(nombre);
     var nombreCientifico = document.createElement("LI");
-    nombreCientifico.innerHTML = item.nombreCientífico;
+    nombreCientifico.innerHTML = item.nombreCientifico;
     lista.appendChild(nombreCientifico);
     var tiempo = document.createElement("LI");
     var icono = document.createElement("I");
@@ -148,6 +148,8 @@ function buscarNombre()
     
     /// 3) Crear el mensaje de respuesta que debe esperar el cliente y añadirlo a la lista de mensajes en espera
     mensaje = new mensajeEspera(idMensaje);
+    
+    
     mensaje.funcionEjecutar = function(resultado)
     {
         

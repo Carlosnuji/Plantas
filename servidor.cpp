@@ -79,6 +79,8 @@ int Servidor::startServidor()
 JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
 {
 
+    JSON resultado;
+
     /// 1) Saber si es un JSON válido
     if(mensaje.is_discarded())
     {
@@ -96,10 +98,33 @@ JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
             {
 
                 std::cout << "Devolver ultimas búsquedas" << std::endl;
-                JSON resultado;
                 resultado["id"] = mensaje["id"];
 
                 std::list<Planta> lista = Planta::find("p");
+                int contador = 0;
+                for(Planta planta : lista)
+                {
+
+                    JSON plantaJSON = planta.toJSON();
+                    resultado["resultado"][contador] = plantaJSON;
+
+                    contador++;
+
+                }
+
+                return resultado;
+
+            } // end if
+
+            /// Devolver búsqueda del usuario
+            if(mensaje["action"] == "buscar")
+            {
+
+                std::cout << "Devolver búsqueda" << std::endl;
+                resultado["id"] = mensaje["id"];
+                std::string buscar = mensaje["busqueda"];
+
+                std::list<Planta> lista = Planta::find(buscar);
                 int contador = 0;
                 for(Planta planta : lista)
                 {

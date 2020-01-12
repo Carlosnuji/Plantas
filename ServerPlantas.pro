@@ -8,7 +8,8 @@ SOURCES += \
         main.cpp \
     planta.cpp \
     servidor.cpp \
-    conexion.cpp
+    conexion.cpp \
+    usuario.cpp
 
 LIBS += -pthread -lz
 
@@ -17,7 +18,8 @@ LIBS += -pthread -lz
 HEADERS += \
     planta.h \
     servidor.h \
-    conexion.h
+    conexion.h \
+    usuario.h
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/../../webSocket/lib/release/ -lixwebsocket
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/../../webSocket/lib/debug/ -lixwebsocket
