@@ -13,7 +13,7 @@ class Planta
 {
 
 public:
-    Planta(std::string, std::string, std::string);
+    Planta(std::string nombre, std::string nombreCientifico, std::string descripcion);
     JSON toJSON();
     Planta fromJSON(JSON);
     void save();

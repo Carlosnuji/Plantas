@@ -37,15 +37,18 @@ void Usuario::save()
 
 }
 
-Usuario Usuario::load(int id)
+Usuario Usuario::load(std::string email, std::string password)
 {
 
     Usuario usuario("", "", "");
 
     QSqlQuery query;
-    query.prepare("SELECT * FROM usuario where idusuario = :id");
+    query.prepare("SELECT * FROM usuario where email = :email AND password = :password");
 
-    query.bindValue(":id", id);
+    QVariant eml = QString::fromStdString(email);
+    QVariant pas = QString::fromStdString(password);
+    query.bindValue(":email", eml);
+    query.bindValue(":password", pas);
     query.exec();
 
     QSqlRecord rec = query.record();

@@ -168,7 +168,7 @@ JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
                 std::cout << "Cargar usuario" << std::endl;
                 resultado["id"] = mensaje["id"];
 
-                Usuario usuario = Usuario::load(mensaje["idUsuario"]);
+                Usuario usuario = Usuario::load(mensaje["email"], mensaje["pass"]);
                 JSON usuarioJSON = usuario.toJSON();
                 resultado["resultado"][0] = usuarioJSON;
 

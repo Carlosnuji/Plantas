@@ -1,3 +1,14 @@
+class Usuario {
+    constructor(id, nombre, pass, email) {
+        this.id = id;
+        this.nombre = nombre;
+        this.pass = pass;
+        this.email = email;
+    }
+}
+
+var usuario;
+
 function cerrarMenu(){
 	document.getElementById("miMenu").style.width = "0%";
 	document.getElementById("listaMenu").style.display = "none";
@@ -70,7 +81,7 @@ function vaciarSection()
 /*******************************   WEBSOCKETS   *******************************/
 
 //Conexión WebSocket con servidor
-let socket = new WebSocket("ws://127.0.0.1:9990");
+let socket = new WebSocket("ws://192.168.33.124:9990");
 
 socket.onopen = function(event)
 {
@@ -184,9 +195,35 @@ function cargarUsuario(idUsuario)
 {
     
     // 1) Crear JSON que se envia al servidor
+    var email = document.getElementById("email").value;
+    var password = document.getElementById("pass").value;
     var idMensaje = dameId();
-    var obj = {action:"cargarUsuario", id:idMensaje, idUsuario:idUsuario};
+    var obj = {action:"cargarUsuario", id:idMensaje, email:email, pass:password};
     socket.send(JSON.stringify(obj));
+    
+    /// 2) Crear el mensaje de respuesta que debe esperar el cliente y añadirlo a la lista de mensajes en espera
+    mensaje = new mensajeEspera(idMensaje);
+    
+    mensaje.funcionEjecutar = function(resultado)
+    {
+        
+        resultado.forEach(usuario);
+        
+        function usuario(item, index)
+        {
+            usuario = new Usuario(item.id, item.nombre, item.pass, item.email);
+            
+            if(usuario.id == 0){
+                document.getElementById("errorLogin").style.display = "flex";
+            }
+            else{
+                document.getElementsByClassName("login")[0].style.display = "none";
+                document.getElementsByClassName("busquedas")[0].style.display = "block";
+            }
+        }
+        
+    }
+    mensajesEsperandoRespuesta.push(mensaje); 
     
 }
 

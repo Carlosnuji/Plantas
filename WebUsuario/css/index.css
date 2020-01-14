@@ -94,7 +94,10 @@ div.search form, div.search form input{
 }
 /* Fin Búsqueda */
 
-/* Section */
+/* Section busquedas */
+.busquedas{
+    display:none;
+}
 .busquedas article{
 	display: grid;
 	grid-template: 1fr / 130px 1fr;
@@ -122,9 +125,59 @@ div.search form, div.search form input{
 	font-size: 1.2rem;
 	color: #78c17d;
 }
-/* Fin Section */
+/* Fin Section busquedas */
 
-
+/* Section login */
+.login h3{
+    padding-top: 2rem;
+    text-align: center;
+    color: #78c17d;
+    font-size: 1.5rem;
+}
+.login form{
+    padding: 1rem;
+}
+.login form ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.login form ul li{
+    padding-top: 1rem;
+    width: 100%;
+}
+.login form ul li input{
+    border: 1px solid #83ce89;
+    border-radius: 3px;
+    width: 100%;
+    padding: 1rem 0;
+}
+.login form ul li:nth-child(3) input{
+    background-color: #b6f6bb;
+    color: darkgreen;
+}
+.login p{
+    text-align: center;
+    font-size: 0.8rem;
+    color: #78c17d;
+}
+.login p a{
+    text-decoration: underline;
+}
+.login #errorLogin{
+    display:none;
+    justify-content:center;
+    padding-top: 1rem;
+}
+.login #errorLogin p{
+    padding: 1rem;
+    border: 1px solid red;
+    border-radius: 3px;
+    background-color: #d9534f;
+    color: white;
+}
+/* Fin Section login */
 
 
 

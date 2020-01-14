@@ -13,11 +13,11 @@ class Usuario
 {
 
 public:
-    Usuario(std::string, std::string, std::string);
+    Usuario(std::string nombre, std::string password, std::string email);
     JSON toJSON();
     void save();
-    static Usuario load(int);
-    static void remove(int);
+    static Usuario load(std::string email, std::string password);
+    static void remove(int id);
     std::string getNombre();
     std::string getPassword();
     std::string getEmail();
