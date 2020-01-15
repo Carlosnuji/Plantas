@@ -2,6 +2,7 @@
 #include <QVariant>
 #include <QString>
 #include <QDebug>
+#include <QSqlError>
 
 Usuario::Usuario(std::string nombre, std::string password, std::string email)
 {
@@ -26,13 +27,21 @@ void Usuario::save()
     query.bindValue(":email", email);
     query.exec();
 
-    query.prepare("select * from usuario order by idusuario desc limit 1;");
-    query.exec();
-    QSqlRecord rec = query.record();
-    while (query.next())
+    QString error (query.lastError().text());
+
+    if(error == " ")
     {
-        int id = query.value("idusuario").toInt();
-        this->m_id = id;
+        query.prepare("select * from usuario order by idusuario desc limit 1;");
+        query.exec();
+        QSqlRecord rec = query.record();
+        while (query.next())
+        {
+            int id = query.value("idusuario").toInt();
+            this->m_id = id;
+        }
+    }else
+    {
+        qDebug() << error;
     }
 
 }

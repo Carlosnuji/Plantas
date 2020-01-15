@@ -180,6 +180,8 @@ JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
 
     } // end if
 
+    return resultado;
+
 }
 
 bool Servidor::exists(const JSON& json, const std::string& key)

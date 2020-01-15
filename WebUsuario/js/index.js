@@ -78,6 +78,12 @@ function vaciarSection()
     
 }
 
+function register()
+{   
+    document.getElementsByClassName("login")[0].style.display = "none"; 
+    document.getElementsByClassName("register")[0].style.display = "block"; 
+}
+
 /*******************************   WEBSOCKETS   *******************************/
 
 //Conexión WebSocket con servidor
@@ -137,7 +143,7 @@ socket.onmessage = function(event)
         
         if(mensaje.id == item.id)
         {
-           item.funcionEjecutar(mensaje.resultado); 
+            item.funcionEjecutar(mensaje.resultado); 
         }
         
     }
@@ -180,13 +186,46 @@ function buscarNombre()
 };
 
 //Crear usuario
-function crearUsuario(nombre, pass, email)
+function crearUsuario()
 {
     
-    // 1) Crear JSON que se envia al servidor
+    
+    // 1) Coger los datos del registro
+    var nombre = document.getElementById("nombre").value;
+    var pass = document.getElementById("password").value;
+    var email = document.getElementById("email2").value;
+    
+    // 2) Crear JSON que se envia al servidor
     var idMensaje = dameId();
     var obj = {action:"crearUsuario", id:idMensaje, nombre:nombre, pass:pass, email:email};
     socket.send(JSON.stringify(obj));
+    
+    /// 3) Crear el mensaje de respuesta que debe esperar el cliente y añadirlo a la lista de mensajes en espera
+    mensaje = new mensajeEspera(idMensaje);
+    
+    mensaje.funcionEjecutar = function(resultado)
+    {
+        
+        resultado.forEach(usuarioNuevo);
+        
+        function usuarioNuevo(item, index)
+        {
+            usuario = new Usuario(item.id, item.nombre, item.pass, item.email);
+            
+            if(usuario.id == 0)
+            {
+                document.getElementById("errorSignIn").style.display = "flex";
+            }
+            else
+            {
+                document.getElementsByClassName("register")[0].style.display = "none";
+                document.getElementsByClassName("busquedas")[0].style.display = "block";
+            }
+        }
+        
+    }
+    
+    mensajesEsperandoRespuesta.push(mensaje);
     
 }
 
@@ -213,10 +252,12 @@ function cargarUsuario(idUsuario)
         {
             usuario = new Usuario(item.id, item.nombre, item.pass, item.email);
             
-            if(usuario.id == 0){
+            if(usuario.id == 0)
+            {
                 document.getElementById("errorLogin").style.display = "flex";
             }
-            else{
+            else
+            {
                 document.getElementsByClassName("login")[0].style.display = "none";
                 document.getElementsByClassName("busquedas")[0].style.display = "block";
             }

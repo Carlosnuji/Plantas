@@ -179,7 +179,71 @@ div.search form, div.search form input{
 }
 /* Fin Section login */
 
-
+/* Section regsiter */
+.register{
+    display: none;
+}
+.register h3{
+    padding-top: 2rem;
+    text-align: center;
+    color: #78c17d;
+    font-size: 1.5rem;
+}
+.register form{
+    padding: 2rem;
+}
+.register form ul{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.register form ul li{
+    padding-top: 1rem;
+    width: 100%;
+    display: flex;
+}
+.register form ul li span{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    background-color: #b6f6bb;
+    border: 1px solid #83ce89;
+    border-right: 0.5px;
+    border-radius: 3px 0px 0px 3px;
+}
+.register form ul li span i{
+    font-size: 1.5rem;
+    color: #78c17d;
+}
+.register form ul li input{
+    border: 1px solid #83ce89;
+    border-radius: 0px 3px 3px 0px;
+    border-left: 0.5px;
+    width: 100%;
+    padding: 1rem 0;
+}
+.register form ul li:nth-child(4) input{
+    background-color: #b6f6bb;
+    color: darkgreen;
+    border: 1px solid #83ce89;
+    border-radius: 3px;
+}
+.register #errorSignIn{
+    display: none;
+    justify-content:center;
+    padding-top: 1rem;
+}
+.register #errorSignIn p{
+    padding: 1rem;
+    border: 1px solid red;
+    border-radius: 3px;
+    background-color: #d9534f;
+    color: white;
+    margin: 0 1rem;
+}
+/* Fin Section login */
 
 
 
