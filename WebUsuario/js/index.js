@@ -62,6 +62,33 @@ function crearArticles(item)
     articulo.appendChild(lista);
     seccion.appendChild(articulo);
     
+    //Cargar ficha planta
+    articulo.onclick = function(){
+        
+        // 1) Crear el JSON que se envia al servidor
+        var idMensaje = dameId();
+        var obj = {action:"cargarPlanta", id:idMensaje, nombre:item.nombre, nombreCientifico:item.nombreCientifico};
+        socket.send(JSON.stringify(obj));
+        
+        // 2) Crear el mensaje de respuesta que debe esperar el cliente y añadirlo a la lista de mensajes en espera
+        mensaje = new mensajeEspera(idMensaje);
+    
+        mensaje.funcionEjecutar = function(resultado)
+        {
+            
+            resultado.forEach(mostarBusqueda);
+            
+            function mostarBusqueda(item, index)
+            {
+                console.log(item);
+                cargarFichaPlanta(item);
+            }
+            
+        }
+        mensajesEsperandoRespuesta.push(mensaje); 
+            
+        };
+    
 }
 
 function vaciarSection()
@@ -82,6 +109,20 @@ function register()
 {   
     document.getElementsByClassName("login")[0].style.display = "none"; 
     document.getElementsByClassName("register")[0].style.display = "block"; 
+}
+
+function cargarFichaPlanta(item)
+{
+      document.getElementsByClassName("busquedas")[0].style.display = "none"; 
+      document.getElementsByClassName("data")[0].style.display = "block";
+      
+      var nombre = document.getElementById("nombrePlanta");
+      var nombreCientifico = document.getElementById("nombreCientifico");
+      var descripcion = document.getElementById("descPlanta");
+      
+      nombre.textContent = item.nombre;
+      nombreCientifico.textContent = item.nombreCientifico;
+      descripcion.textContent = item.descripcion;
 }
 
 /*******************************   WEBSOCKETS   *******************************/
@@ -200,7 +241,7 @@ function crearUsuario()
     var obj = {action:"crearUsuario", id:idMensaje, nombre:nombre, pass:pass, email:email};
     socket.send(JSON.stringify(obj));
     
-    /// 3) Crear el mensaje de respuesta que debe esperar el cliente y añadirlo a la lista de mensajes en espera
+    // 3) Crear el mensaje de respuesta que debe esperar el cliente y añadirlo a la lista de mensajes en espera
     mensaje = new mensajeEspera(idMensaje);
     
     mensaje.funcionEjecutar = function(resultado)

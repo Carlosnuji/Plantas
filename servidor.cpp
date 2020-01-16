@@ -176,6 +176,21 @@ JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
 
             } // end if
 
+            /// Cargar planta
+            if(mensaje["action"] == "cargarPlanta")
+            {
+
+                std::cout << "Cargar planta" <<std::endl;
+                resultado["id"] = mensaje["id"];
+
+                Planta planta = Planta::load(mensaje["nombre"], mensaje["nombreCientifico"]);
+                JSON plantaJSON = planta.toJSON();
+                resultado["resultado"][0] = plantaJSON;
+
+                return resultado;
+
+            }
+
         }
 
     } // end if

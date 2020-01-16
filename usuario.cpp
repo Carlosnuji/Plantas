@@ -17,7 +17,7 @@ void Usuario::save()
 {
 
     QSqlQuery query;
-    query.prepare("INSERT INTO usuario (nombre, password, email) VALUES (:nombre, :pass, :email);");
+    query.prepare("INSERT INTO usuario (nombre, password, email) VALUES (:nombre, crypt(:pass, gen_salt('bf')), :email);");
 
     QVariant nombre = QString::fromStdString(m_nombre);
     QVariant pass = QString::fromStdString(m_password);
@@ -52,7 +52,7 @@ Usuario Usuario::load(std::string email, std::string password)
     Usuario usuario("", "", "");
 
     QSqlQuery query;
-    query.prepare("SELECT * FROM usuario where email = :email AND password = :password");
+    query.prepare("SELECT (password = crypt(:password, password)) AS pwd_match  FROM usuario where email = :email;");
 
     QVariant eml = QString::fromStdString(email);
     QVariant pas = QString::fromStdString(password);
@@ -60,17 +60,33 @@ Usuario Usuario::load(std::string email, std::string password)
     query.bindValue(":password", pas);
     query.exec();
 
+    bool passCorrect = false;
     QSqlRecord rec = query.record();
     while (query.next())
     {
-        QString nombre = query.value("nombre").toString();
-        QString pass = query.value("password").toString();
-        QString email = query.value("email").toString();
+        passCorrect = QVariant(query.value("pwd_match")).toBool();
+    } // end while
 
-        Usuario user(nombre.toUtf8().constData(), pass.toUtf8().constData(), email.toUtf8().constData());
-        user.m_id = query.value("idusuario").toInt();
-        return user;
-    }
+    if(passCorrect)
+    {
+
+        query.prepare("SELECT * from usuario where email = :email");
+        query.bindValue(":email", eml);
+        query.exec();
+
+        QSqlRecord rec = query.record();
+        while (query.next())
+        {
+            QString nombre = query.value("nombre").toString();
+            QString pass = query.value("password").toString();
+            QString email = query.value("email").toString();
+
+            Usuario user(nombre.toUtf8().constData(), pass.toUtf8().constData(), email.toUtf8().constData());
+            user.m_id = query.value("idusuario").toInt();
+            return user;
+        }
+
+    } // end if
 
 
     return usuario;
@@ -101,6 +117,7 @@ JSON Usuario::toJSON()
 
 }
 
+int Usuario::getId(){ return m_id; }
 std::string Usuario::getNombre(){ return m_nombre; }
 std::string Usuario::getPassword(){ return m_password; }
 std::string Usuario::getEmail(){ return m_email; }

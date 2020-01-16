@@ -245,7 +245,36 @@ div.search form, div.search form input{
 }
 /* Fin Section login */
 
-
+/* Section data */
+.data{
+    display: none;
+    padding: 1.5rem;
+}
+.data ul li{
+    padding-top: 1rem;
+}
+.data ul li:nth-child(1){
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.data ul li figure{
+    width: 150px;
+    height: 150px;
+}
+.data ul li figure img{
+    border-radius: 50%;
+}
+.data ul li h5{
+    color: #78c17d;
+    font-size: 1.5rem;
+    border-bottom: 1px solid #83ce89;
+}
+.data ul li p{
+    padding-top: 0.5rem;
+    color: #9add9f;
+}
+/* Fin Section data */ 
 
 
 

@@ -29,13 +29,14 @@ void Planta::save()
 
 }
 
-Planta Planta::load(int id)
+Planta Planta::load(std::string nombre, std::string nombreCientifico)
 {
 
     QSqlQuery query;
-    query.prepare("SELECT * FROM planta where idplanta = :id");
+    query.prepare("SELECT * FROM planta where nombre = :nombre AND nombrecientifico = :nomcien");
 
-    query.bindValue(":id", id);
+    query.bindValue(":nombre", QString::fromStdString(nombre));
+    query.bindValue(":nomcien", QString::fromStdString(nombreCientifico));
     query.exec();
 
     QSqlRecord rec = query.record();
