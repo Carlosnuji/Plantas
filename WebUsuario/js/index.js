@@ -261,6 +261,7 @@ function crearUsuario()
             {
                 document.getElementsByClassName("register")[0].style.display = "none";
                 document.getElementsByClassName("busquedas")[0].style.display = "block";
+                document.getElementById("menuUser").style.display = "block";
             }
         }
         
@@ -301,6 +302,7 @@ function cargarUsuario(idUsuario)
             {
                 document.getElementsByClassName("login")[0].style.display = "none";
                 document.getElementsByClassName("busquedas")[0].style.display = "block";
+                document.getElementById("menuUser").style.display = "block";
             }
         }
         
@@ -324,9 +326,6 @@ function dameId()
     g_ultimoId++;
     return g_ultimoId;
 }
-
-
-
 
 
 

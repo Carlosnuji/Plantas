@@ -67,6 +67,9 @@ header div.menu ul li a{
 	display: block;
 	transition: 0.3s;
 }
+header #menuUser{
+    display: none;
+}
 /* Fin Header */
 
 /* Búsqueda */
