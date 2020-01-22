@@ -279,7 +279,35 @@ div.search form, div.search form input{
 }
 /* Fin Section data */ 
 
-
+/* Section quejas */
+.quejas{
+    display:none;
+}
+.quejas h3{
+    padding-top: 2rem;
+    text-align: center;
+    color: #78c17d;
+    font-size: 1.5rem;
+}
+.quejas form{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+}
+.quejas form input{
+    border: 0;
+    border-bottom: 1px solid #83ce89;
+    width: 100%;
+    padding: 1rem 0;
+    margin-bottom: 1rem;
+}
+.quejas form input:nth-child(2){
+    background-color: #b6f6bb;
+    color: darkgreen;
+    border: 1px solid #83ce89;
+    border-radius: 3px;
+}
+/* Fin Section quejas */
 
 
 
