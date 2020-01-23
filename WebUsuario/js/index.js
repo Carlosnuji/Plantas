@@ -122,6 +122,7 @@ function cargarFichaPlanta(item)
 {
       document.getElementsByClassName("busquedas")[0].style.display = "none"; 
       document.getElementsByClassName("data")[0].style.display = "block";
+      document.getElementById("like").style.display = "inline";
       
       var nombre = document.getElementById("nombrePlanta");
       var nombreCientifico = document.getElementById("nombreCientifico");
@@ -184,17 +185,23 @@ socket.onmessage = function(event)
     var mensaje = JSON.parse(event.data);
     
     /// 2) Recorrer los mensajes en espera y si existe ejecutamos la funcion correspondiente
-    mensajesEsperandoRespuesta.forEach(mostrarMensajes);
-    
-    function mostrarMensajes(item, index)
+    if(mensaje != null)
     {
         
-        if(mensaje.id == item.id)
+        mensajesEsperandoRespuesta.forEach(mostrarMensajes);
+    
+        function mostrarMensajes(item, index)
         {
-            item.funcionEjecutar(mensaje.resultado); 
+            
+            if(mensaje.id == item.id)
+            {
+                item.funcionEjecutar(mensaje.resultado); 
+            }
+            
         }
         
     }
+    
     
 };
 
@@ -327,6 +334,28 @@ function enviarQueja()
     var idUsuario = usuario.id;
     var idMensaje = dameId();
     var obj = {action:"queja", id:idMensaje, idUsuario:idUsuario, queja:queja};
+    socket.send(JSON.stringify(obj));
+    
+    /// 2) Crear el mensaje de respuesta que debe esperar el cliente y añadirlo a la lista de mensajes en espera
+    mensaje = new mensajeEspera(idMensaje);
+    
+    mensaje.funcionEjecutar = function(resultado)
+    {
+        
+        document.getElementById("quejaExito").style.display = "block";
+        
+    }
+    mensajesEsperandoRespuesta.push(mensaje); 
+    
+}
+
+//Chequear like
+function checkLike()
+{
+    
+    // 1) Crear JSON que se envia al servidor
+    var idMensaje = dameId();
+    var obj = {action:"checkLike", id:idMensaje};
     socket.send(JSON.stringify(obj));
     
 }

@@ -10,7 +10,8 @@ SOURCES += \
     servidor.cpp \
     conexion.cpp \
     usuario.cpp \
-    queja.cpp
+    queja.cpp \
+    favorito.cpp
 
 LIBS += -pthread -lz
 
@@ -21,7 +22,8 @@ HEADERS += \
     servidor.h \
     conexion.h \
     usuario.h \
-    queja.h
+    queja.h \
+    favorito.h
 
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/websocketLib/lib/release/ -lixwebsocket

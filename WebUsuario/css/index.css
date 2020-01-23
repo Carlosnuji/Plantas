@@ -70,6 +70,9 @@ header div.menu ul li a{
 header #menuUser{
     display: none;
 }
+header span #like{
+    display: none;
+}
 /* Fin Header */
 
 /* Búsqueda */
@@ -306,6 +309,12 @@ div.search form, div.search form input{
     color: darkgreen;
     border: 1px solid #83ce89;
     border-radius: 3px;
+}
+.quejas p{
+    padding: 1rem;
+    color: #78c17d;
+    text-align: center;
+    display: none;
 }
 /* Fin Section quejas */
 
