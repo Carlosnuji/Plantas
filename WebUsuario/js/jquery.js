@@ -1,7 +1,9 @@
 /*******************************   JQUERY   *******************************/
 $(document).ready(function(){
 
-    $("#atras").click(function(){
+    // Botón atras
+    $("#atras").click(function()
+    {
         
         if($(".register").is(":visible"))
         {
@@ -18,6 +20,27 @@ $(document).ready(function(){
         }
         
     });
+    
+    // Botón quejas
+    $("#quejas").click(function()
+    {
+        
+        if($(".busquedas").is(":visible"))
+        {
+            $(".busquedas").fadeOut();
+            $(".quejas").delay(800).fadeIn();
+        }
+        
+        if($(".data").is(":visible"))
+        {
+            $(".data").fadeOut();
+            $(".quejas").delay(800).fadeIn();
+        }
+        
+    })
 
 }); 
+
+
+
  

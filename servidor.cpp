@@ -189,9 +189,26 @@ JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
 
                 return resultado;
 
-            }
+            } // end if
 
-        }
+            /// Queja
+            if(mensaje["action"] == "queja")
+            {
+
+                std::cout << "Responder queja" <<std::endl;
+                resultado["id"] = mensaje["id"];
+
+                int idUsuario = mensaje["idUsuario"];
+                std::string quejaValor = mensaje["queja"];
+                Queja queja(idUsuario, quejaValor);
+                queja.save();
+
+                return resultado;
+
+            } // end if
+
+
+        } // end if
 
     } // end if
 

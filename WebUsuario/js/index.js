@@ -1,10 +1,17 @@
 class Usuario {
+    
     constructor(id, nombre, pass, email) {
-        this.id = id;
-        this.nombre = nombre;
-        this.pass = pass;
-        this.email = email;
+        this._id = id;
+        this._nombre = nombre;
+        this._pass = pass;
+        this._email = email;
     }
+    
+    get id()
+    {
+        return this._id;
+    }
+    
 }
 
 var usuario;
@@ -288,9 +295,9 @@ function cargarUsuario(idUsuario)
     mensaje.funcionEjecutar = function(resultado)
     {
         
-        resultado.forEach(usuario);
+        resultado.forEach(usuarios);
         
-        function usuario(item, index)
+        function usuarios(item, index)
         {
             usuario = new Usuario(item.id, item.nombre, item.pass, item.email);
             
@@ -308,6 +315,19 @@ function cargarUsuario(idUsuario)
         
     }
     mensajesEsperandoRespuesta.push(mensaje); 
+    
+}
+
+//Enviar queja
+function enviarQueja()
+{
+    
+    // 1) Crear JSON que se envia al servidor
+    var queja = document.getElementById("queja").value;
+    var idUsuario = usuario.id;
+    var idMensaje = dameId();
+    var obj = {action:"queja", id:idMensaje, idUsuario:idUsuario, queja:queja};
+    socket.send(JSON.stringify(obj));
     
 }
 

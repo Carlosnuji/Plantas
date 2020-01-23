@@ -8,6 +8,7 @@
 #include "json.hpp"
 #include "planta.h"
 #include "usuario.h"
+#include "queja.h"
 
 using JSON = nlohmann::json;
 

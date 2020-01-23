@@ -36,10 +36,10 @@
 			</a>
 
 			<ul id="listaMenu">
-				<li><a href="">Favoritos</a></li>
-				<li><a href="">Ajustes</a></li>
-				<li><a href="">Ayuda</a></li>
-				<li><a href="">Algún problema?</a></li>
+				<li><a>Favoritos</a></li>
+				<li><a>Ajustes</a></li>
+				<li><a>Ayuda</a></li>
+				<li><a id="quejas" onclick="cerrarMenu()">Algún problema?</a></li>
 			</ul>
 
 		</div>
@@ -157,7 +157,7 @@
         <form>
         
             <input type="text" id="queja" nombre="queja" placeholder="Describa su problema">
-            <input type="button" value="Enviar" onclick="">
+            <input type="button" value="Enviar" onclick="enviarQueja()">
         
         </form>
 	
