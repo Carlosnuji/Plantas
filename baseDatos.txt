@@ -1,0 +1,5 @@
+hostname=localhost
+databaseName=plantas
+port=5432
+username=postgres
+paswword=
