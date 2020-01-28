@@ -355,8 +355,23 @@ function checkLike()
     
     // 1) Crear JSON que se envia al servidor
     var idMensaje = dameId();
-    var obj = {action:"checkLike", id:idMensaje};
+    var idUsuario = usuario.id;
+    var nombrePlanta = document.getElementById("nombrePlanta").innerHTML;
+    var nombreCientifico = document.getElementById("nombreCientifico").innerHTML;
+    var obj = {action:"checkLike", id:idMensaje, idUsuario:idUsuario, nombrePlanta:nombrePlanta, nombreCientifico:nombreCientifico};
     socket.send(JSON.stringify(obj));
+    
+    /// 2) Crear el mensaje de respuesta que debe esperar el cliente y añadirlo a la lista de mensajes en espera
+    mensaje = new mensajeEspera(idMensaje);
+    
+    mensaje.funcionEjecutar = function(resultado)
+    {
+        
+        if(resultado[0].check == true) document.getElementById("like").style.color = "#ffffff";
+        else document.getElementById("like").style.color = "#374e19";
+        
+    }
+    mensajesEsperandoRespuesta.push(mensaje); 
     
 }
 

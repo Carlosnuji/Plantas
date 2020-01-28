@@ -9,6 +9,7 @@
 #include "planta.h"
 #include "usuario.h"
 #include "queja.h"
+#include "favorito.h"
 
 using JSON = nlohmann::json;
 

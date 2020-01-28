@@ -109,6 +109,8 @@ JSON Planta::toJSON()
 
 }
 
+int Planta::getId(){ return m_id; }
+
 std::string Planta::getNombre(){ return m_nombre; }
 
 std::string Planta::getNombreCientifico(){ return m_nombreCientifico; }

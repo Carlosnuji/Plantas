@@ -14,8 +14,9 @@ class Favorito
 
 public:
     Favorito(int m_idUsuario, int m_idPlanta);
-    bool save();
-    void load();
+    JSON toJSON();
+    void load(int idUsuario, int idPlanta);
+    bool check();
 
 private:
     int m_id{0};

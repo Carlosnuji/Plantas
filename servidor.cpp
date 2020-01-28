@@ -207,6 +207,21 @@ JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
 
             } // end if
 
+            if(mensaje["action"] == "checkLike")
+            {
+
+                std::cout << "Check like" << std::endl;
+                resultado["id"] = mensaje["id"];
+
+                Planta planta = Planta::load(mensaje["nombrePlanta"], mensaje["nombreCientifico"]);
+                Favorito favorito(mensaje["idUsuario"], planta.getId());
+
+                bool check = favorito.check();
+                JSON favoritoJSON = favorito.toJSON();
+                favoritoJSON["check"] = check;
+                resultado["resultado"][0] = favoritoJSON;
+
+            }
 
         } // end if
 
