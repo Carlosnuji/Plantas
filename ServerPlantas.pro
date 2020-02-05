@@ -13,7 +13,7 @@ SOURCES += \
     queja.cpp \
     favorito.cpp
 
-LIBS += -pthread -lz
+LIBS += -pthread -lz -lssl -lcrypto
 
 
 
@@ -24,7 +24,6 @@ HEADERS += \
     usuario.h \
     queja.h \
     favorito.h
-
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/websocketLib/lib/release/ -lixwebsocket
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/websocketLib/lib/debug/ -lixwebsocket

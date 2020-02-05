@@ -1,4 +1,6 @@
 #include "servidor.h"
+#include "ixwebsocket/IXSocketTLSOptions.h"
+#include <QDebug>
 
 Servidor::Servidor(int puerto)
 {
@@ -12,6 +14,14 @@ int Servidor::startServidor()
 
     //Crea un servidor
     ix::WebSocketServer server(this->m_puerto, "0.0.0.0");
+
+    ix::SocketTLSOptions webSocketTLS;
+    webSocketTLS.tls = true;
+    webSocketTLS.keyFile = "/home/usuario/cert/localhost/localhost.key";
+    webSocketTLS.certFile = "/home/usuario/cert/localhost/localhost.crt";
+    webSocketTLS.caFile = "NONE";
+
+    server.setTLSOptions(webSocketTLS);
 
     server.setOnConnectionCallback(
                 [this](std::shared_ptr<ix::WebSocket> webSocket,

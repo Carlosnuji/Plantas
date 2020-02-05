@@ -65,12 +65,24 @@ void Favorito::load(int idUsuario, int idPlanta)
 {
 
     QSqlQuery query;
-    query.prepare("SELECT * from favorito where idusuario=:idusuario AND idplanta=:idplanta");
+    query.prepare("SELECT count(*) as numero FROM favorito where idusuario=:idusuario AND idplanta=:idplanta");
     query.bindValue(":idusuario", idUsuario);
     query.bindValue(":idplanta", idPlanta);
     bool resultado = query.exec();
 
-    if(resultado && query.next())
+    int numeroFilas{0};
+    if(resultado)
+    {
+        query.next();
+        numeroFilas = query.value("numero").toInt();
+    }
+
+    query.prepare("SELECT * from favorito where idusuario=:idusuario AND idplanta=:idplanta");
+    query.bindValue(":idusuario", idUsuario);
+    query.bindValue(":idplanta", idPlanta);
+    bool resultado2 = query.exec();
+
+    if(resultado2 && query.next())
     {
 
         m_id = query.value("idfavorito").toInt();

@@ -136,7 +136,7 @@ function cargarFichaPlanta(item)
 /*******************************   WEBSOCKETS   *******************************/
 
 //Conexión WebSocket con servidor
-let socket = new WebSocket("ws://192.168.33.124:9990");
+let socket = new WebSocket("wss://192.168.33.124:9990");
 
 socket.onopen = function(event)
 {
