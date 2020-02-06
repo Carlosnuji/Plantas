@@ -217,6 +217,7 @@ JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
 
             } // end if
 
+            /// Check favorito
             if(mensaje["action"] == "checkLike")
             {
 
@@ -231,7 +232,23 @@ JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
                 favoritoJSON["check"] = check;
                 resultado["resultado"][0] = favoritoJSON;
 
-            }
+            } // end if
+
+            /// Cargar favorito
+            if(mensaje["action"] == "cargarFavorito")
+            {
+
+                std::cout << "Cargar favorito" << std::endl;
+                resultado["id"] = mensaje["id"];
+
+                Planta planta = Planta::load(mensaje["nombre"], mensaje["nombreCientifico"]);
+                Favorito favorito(0, 0);
+                favorito.load(mensaje["idUsuario"], planta.getId());
+
+                resultado["resultado"][0] = favorito.toJSON();
+
+
+            } // end if
 
         } // end if
 

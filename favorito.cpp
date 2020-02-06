@@ -77,21 +77,24 @@ void Favorito::load(int idUsuario, int idPlanta)
         numeroFilas = query.value("numero").toInt();
     }
 
-    query.prepare("SELECT * from favorito where idusuario=:idusuario AND idplanta=:idplanta");
-    query.bindValue(":idusuario", idUsuario);
-    query.bindValue(":idplanta", idPlanta);
-    bool resultado2 = query.exec();
-
-    if(resultado2 && query.next())
+    if(numeroFilas == 1)
     {
 
-        m_id = query.value("idfavorito").toInt();
-        m_idUsuario = query.value("idusuario").toInt();
-        m_idPlanta = query.value("idplanta").toInt();
+        query.prepare("SELECT * from favorito where idusuario=:idusuario AND idplanta=:idplanta");
+        query.bindValue(":idusuario", idUsuario);
+        query.bindValue(":idplanta", idPlanta);
+        bool resultado2 = query.exec();
+
+        if(resultado2 && query.next())
+        {
+
+            m_id = query.value("idfavorito").toInt();
+            m_idUsuario = query.value("idusuario").toInt();
+            m_idPlanta = query.value("idplanta").toInt();
+
+        } // end if
 
     } // end if
-
-    qDebug() << m_id;
 
 }
 
@@ -108,6 +111,8 @@ JSON Favorito::toJSON()
 
 }
 
+int Favorito::getIdUsuario() { return m_idUsuario; }
+int Favorito::getIdPlanta() { return m_idPlanta; }
 
 
 

@@ -69,9 +69,10 @@ function crearArticles(item)
     articulo.appendChild(lista);
     seccion.appendChild(articulo);
     
-    //Cargar ficha planta
+    //Cargar ficha planta y cargar favoritos
     articulo.onclick = function(){
         
+        // Cargar ficha
         // 1) Crear el JSON que se envia al servidor
         var idMensaje = dameId();
         var obj = {action:"cargarPlanta", id:idMensaje, nombre:item.nombre, nombreCientifico:item.nombreCientifico};
@@ -87,13 +88,37 @@ function crearArticles(item)
             
             function mostarBusqueda(item, index)
             {
-                console.log(item);
                 cargarFichaPlanta(item);
             }
             
         }
         mensajesEsperandoRespuesta.push(mensaje); 
+        
+        // Cargar favoritos
+        // 1) Crear el JSON que se envia al servidor
+        var idMensaje = dameId();
+        var idUsuario = usuario.id;
+        var obj = {action:"cargarFavorito", id:idMensaje, nombre:item.nombre, nombreCientifico:item.nombreCientifico, idUsuario:idUsuario};
+        socket.send(JSON.stringify(obj));
+        
+        // 2) Crear el mensaje de respuesta que debe esperar el cliente y añadirlo a la lista de mensajes en espera
+        mensaje = new mensajeEspera(idMensaje);
+        mensaje.funcionEjecutar = function(resultado)
+        {
             
+            resultado.forEach(mostarBusqueda);
+            
+            function mostarBusqueda(item, index)
+            {
+                var id = item.idUsuario;
+                
+                if(id == 0) document.getElementById("like").style.color = "#ffffff";
+                else document.getElementById("like").style.color = "#374e19";
+            }
+            
+        }
+        mensajesEsperandoRespuesta.push(mensaje); 
+        
         };
     
 }
@@ -136,7 +161,7 @@ function cargarFichaPlanta(item)
 /*******************************   WEBSOCKETS   *******************************/
 
 //Conexión WebSocket con servidor
-let socket = new WebSocket("wss://192.168.33.124:9990");
+let socket = new WebSocket("wss://localhost:9990");
 
 socket.onopen = function(event)
 {

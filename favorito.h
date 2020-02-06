@@ -17,6 +17,8 @@ public:
     JSON toJSON();
     void load(int idUsuario, int idPlanta);
     bool check();
+    int getIdUsuario();
+    int getIdPlanta();
 
 private:
     int m_id{0};

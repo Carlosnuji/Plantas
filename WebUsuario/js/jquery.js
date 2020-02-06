@@ -16,6 +16,7 @@ $(document).ready(function(){
             {
                 $(".data").fadeOut();
                 $(".busquedas").delay(800).fadeIn();
+                $("#like").hide();
             }
         }
         
