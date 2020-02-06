@@ -101,10 +101,10 @@ div.search form, div.search form input{
 /* Fin Búsqueda */
 
 /* Section busquedas */
-.busquedas{
+.busquedas, .listaFavoritos{
     display:none;
 }
-.busquedas article{
+.busquedas article, .listaFavoritos article{
 	display: grid;
 	grid-template: 1fr / 130px 1fr;
 	align-items: center;
@@ -112,21 +112,21 @@ div.search form, div.search form input{
 	padding: 1rem 0;
 	border-bottom: 1px solid #78c17d;
 }
-.busquedas article figure{
+.busquedas article figure, .listaFavoritos article figure{
 	height: 100px;
 	width: 100px;
 }
-.busquedas article figure img{
+.busquedas article figure img, .listaFavoritos article figure img{
 	width: 100%;
 	height: 100%;
 	border-radius: 3px;
 }
-.busquedas article ul{
+.busquedas article ul, .listaFavoritos article ul{
 	justify-self: flex-start;
 	align-self: flex-start;
 	padding-left: 1.3rem;
 }
-.busquedas article ul li{
+.busquedas article ul li, .listaFavoritos article ul li{
 	padding-bottom: 0.5rem;
 	font-size: 1.2rem;
 	color: #78c17d;

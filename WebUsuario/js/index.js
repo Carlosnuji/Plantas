@@ -39,10 +39,10 @@ function cerrarBuscar(){
 	document.getElementsByClassName("search")[0].style.display = "none";
 }
 
-function crearArticles(item)
+function crearArticles(item, section)
 {
     
-    var seccion = document.getElementsByClassName("busquedas")[0];
+    var seccion = document.getElementsByClassName(section)[0];
     var articulo = document.createElement("ARTICLE");
             
     var figure = document.createElement("FIGURE");
@@ -145,7 +145,8 @@ function register()
 
 function cargarFichaPlanta(item)
 {
-      document.getElementsByClassName("busquedas")[0].style.display = "none"; 
+      document.getElementsByClassName("busquedas")[0].style.display = "none";
+      document.getElementsByClassName("listaFavoritos")[0].style.display = "none"; 
       document.getElementsByClassName("data")[0].style.display = "block";
       document.getElementById("like").style.display = "inline";
       
@@ -184,7 +185,7 @@ socket.onopen = function(event)
         {
             console.log(item);
             
-            crearArticles(item);
+            crearArticles(item, "busquedas");
             
         }
     }
@@ -354,7 +355,7 @@ function cargarUsuario(idUsuario)
 function enviarQueja()
 {
     
-    // 1) Crear JSON que se envia al servidor
+    /// 1) Crear JSON que se envia al servidor
     var queja = document.getElementById("queja").value;
     var idUsuario = usuario.id;
     var idMensaje = dameId();
@@ -378,7 +379,7 @@ function enviarQueja()
 function checkLike()
 {
     
-    // 1) Crear JSON que se envia al servidor
+    /// 1) Crear JSON que se envia al servidor
     var idMensaje = dameId();
     var idUsuario = usuario.id;
     var nombrePlanta = document.getElementById("nombrePlanta").innerHTML;
@@ -397,6 +398,33 @@ function checkLike()
         
     }
     mensajesEsperandoRespuesta.push(mensaje); 
+    
+}
+
+//Cargar lista favoritos
+function cargarListaFav()
+{
+    
+    /// 1) Crear JSON que se envia al servidor
+    var idMensaje = dameId();
+    var idUsuario = usuario.id;
+    var obj = {action:"listaFavoritos", id:idMensaje, idUsuario:idUsuario};
+    socket.send(JSON.stringify(obj));
+    
+    /// 2) Crear el mensaje de respuesta que debe esperar el cliente y añadirlo a la lista de mensajes en espera
+    mensaje = new mensajeEspera(idMensaje);
+    mensaje.funcionEjecutar = function(resultado)
+    {
+        resultado.forEach(mostrarUltimasBusquedas);
+    
+        function mostrarUltimasBusquedas(item, index)
+        {
+            
+            crearArticles(item, "listaFavoritos");
+            
+        }
+    }
+    mensajesEsperandoRespuesta.push(mensaje);
     
 }
 

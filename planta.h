@@ -18,6 +18,7 @@ public:
     Planta fromJSON(JSON);
     void save();
     static Planta load(std::string nombre, std::string nombreCientifico);
+    void load(int id);
     void remove(int);
     static std::list<Planta> find(std::string);
     ~Planta();

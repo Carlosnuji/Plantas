@@ -111,6 +111,33 @@ JSON Favorito::toJSON()
 
 }
 
+std::list<Planta> Favorito::find(int idUsuario)
+{
+
+    std::list<Planta> lista{};
+
+    QSqlQuery query;
+    query.prepare("SELECT * from favorito where idusuario=:idusuario");
+    query.bindValue(":idusuario", idUsuario);
+    query.exec();
+
+    QSqlRecord rec = query.record();
+    while (query.next())
+    {
+
+        int idPlanta = query.value("idplanta").toInt();
+
+        Planta planta("", "", "");
+        planta.load(idPlanta);
+
+        lista.push_back(planta);
+
+    } // end while
+
+    return lista;
+
+}
+
 int Favorito::getIdUsuario() { return m_idUsuario; }
 int Favorito::getIdPlanta() { return m_idPlanta; }
 

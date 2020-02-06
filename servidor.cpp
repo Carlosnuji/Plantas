@@ -247,6 +247,26 @@ JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
 
                 resultado["resultado"][0] = favorito.toJSON();
 
+            } // end if
+
+            /// Cargar lista favoritos
+            if(mensaje["action"] == "listaFavoritos")
+            {
+
+                std::cout << "Lista favoritos" << std::endl;
+                resultado["id"] = mensaje["id"];
+
+                std::list<Planta> lista = Favorito::find(mensaje["idUsuario"]);
+                int contador = 0;
+                for(Planta planta : lista)
+                {
+
+                    JSON plantaJSON = planta.toJSON();
+                    resultado["resultado"][contador] = plantaJSON;
+
+                    contador++;
+
+                }
 
             } // end if
 

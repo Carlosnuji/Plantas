@@ -38,6 +38,31 @@ $(document).ready(function(){
             $(".quejas").delay(800).fadeIn();
         }
         
+        if($(".listaFavoritos").is(":visible"))
+        {
+            $(".listaFavoritos").fadeOut();
+            $(".quejas").delay(800).fadeIn();
+        }
+        
+    })
+    
+    // Botón listaFavoritos
+    $("#favoritos").click(function()
+    {
+     
+        if($(".busquedas").is(":visible"))
+        {
+            $(".busquedas").fadeOut();
+            $(".listaFavoritos").delay(800).fadeIn();
+        }
+        
+        if($(".data").is(":visible"))
+        {
+            $(".data").fadeOut();
+            $(".listaFavoritos").delay(800).fadeIn();
+            $("#like").hide();
+        }
+        
     })
 
 }); 
@@ -45,3 +70,24 @@ $(document).ready(function(){
 
 
  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

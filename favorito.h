@@ -1,11 +1,13 @@
 #ifndef FAVORITO_H
 #define FAVORITO_H
 
+#include <iostream>
 #include <string>
 #include <list>
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include "json.hpp"
+#include "planta.h"
 
 using JSON = nlohmann::json;
 
@@ -17,6 +19,7 @@ public:
     JSON toJSON();
     void load(int idUsuario, int idPlanta);
     bool check();
+    static std::list<Planta> find(int idUsuario);
     int getIdUsuario();
     int getIdPlanta();
 

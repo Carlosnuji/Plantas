@@ -53,6 +53,31 @@ Planta Planta::load(std::string nombre, std::string nombreCientifico)
 
 }
 
+void Planta::load(int id)
+{
+
+    QSqlQuery query;
+    query.prepare("SELECT * FROM planta where idplanta=:idplanta");
+
+    query.bindValue(":idplanta", id);
+    query.exec();
+
+    if(query.next())
+    {
+
+        QString nombre = query.value("nombre").toString();
+        QString nombreCientifico = query.value("nombreCientifico").toString();
+        QString descripcion = query.value("descripcion").toString();
+
+        m_id = query.value("idplanta").toInt();
+        m_nombre = nombre.toUtf8().constData();
+        m_nombreCientifico = nombreCientifico.toUtf8().constData();
+        m_descripcion = descripcion.toUtf8().constData();
+
+    }
+
+}
+
 void Planta::remove(int id)
 {
 

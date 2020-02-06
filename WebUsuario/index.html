@@ -37,7 +37,7 @@
 			</a>
 
 			<ul id="listaMenu">
-				<li><a>Favoritos</a></li>
+				<li><a id="favoritos" onclick="cerrarMenu();cargarListaFav()">Favoritos</a></li>
 				<li><a>Ajustes</a></li>
 				<li><a>Ayuda</a></li>
 				<li><a id="quejas" onclick="cerrarMenu()">Algún problema?</a></li>
@@ -165,6 +165,8 @@
         <p id="quejaExito">Su mensaje ha sido enviado con éxito</p>
 	
 	</section>
+	
+	<section class="listaFavoritos"></section>
 
 </body>
 	
