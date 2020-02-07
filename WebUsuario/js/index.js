@@ -127,13 +127,8 @@ function vaciarSection()
 {
     
     var seccion = document.getElementsByClassName("busquedas")[0];
-    var hijos = seccion.childNodes;
-        
-    hijos.forEach(eliminarHijos);
-    function eliminarHijos(item, index)
-    {
-        item.remove();
-    }
+    
+    seccion.innerHTML = '';
     
 }
 
@@ -258,7 +253,7 @@ function buscarNombre()
         function mostarBusqueda(item, index)
         {
             console.log(item);
-            crearArticles(item);
+            crearArticles(item, "busquedas");
         }
         
     }
@@ -426,6 +421,16 @@ function cargarListaFav()
     }
     mensajesEsperandoRespuesta.push(mensaje);
     
+}
+
+//Cargar perfil
+function perfil()
+{
+    /// 1) Crear JSON que se envia al servidor
+    var idMensaje = dameId();
+    var idUsuario = usuario.id;
+    var obj = {action:"perfil", id:idMensaje, idUsuario:idUsuario};
+    socket.send(JSON.stringify(obj));
 }
 
 //Mensajes JSON

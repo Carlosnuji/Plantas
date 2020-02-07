@@ -93,6 +93,31 @@ Usuario Usuario::load(std::string email, std::string password)
 
 }
 
+void Usuario::load(int id)
+{
+
+    QSqlQuery query;
+    query.prepare("SELECT * FROM usuario where idusuario=:idusuario");
+
+    query.bindValue(":idusuario", id);
+    query.exec();
+
+    if(query.next())
+    {
+
+        QString nombre = query.value("nombre").toString();
+        QString pass = query.value("password").toString();
+        QString email = query.value("email").toString();
+
+        m_id = query.value("idusuario").toInt();
+        m_nombre = nombre.toUtf8().constData();
+        m_password = pass.toUtf8().constData();
+        m_email = email.toUtf8().constData();
+
+    }
+
+}
+
 void Usuario::remove(int id)
 {
 

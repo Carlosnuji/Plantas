@@ -270,6 +270,20 @@ JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
 
             } // end if
 
+            /// Cargar perfil
+            if(mensaje["action"] == "perfil")
+            {
+
+                std::cout << "Perfil" << std::endl;
+                resultado["id"] = mensaje["id"];
+
+                Usuario usuario("", "", "");
+                usuario.load(mensaje["idUsuario"]);
+
+                resultado["resultado"][0] = usuario.toJSON();
+
+            } // end if
+
         } // end if
 
     } // end if

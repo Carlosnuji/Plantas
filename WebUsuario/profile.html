@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Profile</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/index.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/0070d8a8c5.js" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="js/index.js"></script>
+	<script src="js/jquery.js"></script>
+</head>
+
+<body>
+	
+	<header>
+		
+		<span>
+			<i id="atras" class="fas fa-cannabis"></i>
+			<i id="like" class="far fa-star" onclick="checkLike()"></i>
+		</span>
+
+		<i class="fas fa-fan"></i>
+
+		<span id="menuUser">
+			<i class="fas fa-search" onclick="buscar()"></i>
+			<i onclick="abrirMenu()" class="fas fa-ellipsis-v"></i>
+		</span>
+
+		<div id="miMenu" class="menu">
+			
+			<a href="javascript:void(0)" class="closebtn" onclick="cerrarMenu()">
+				<i class="fas fa-times"></i>
+			</a>
+
+			<ul id="listaMenu">
+				<li><a id="favoritos" onclick="cerrarMenu();cargarListaFav()">Favoritos</a></li>
+				<li><a>Perfil</a></li>
+				<li><a>Ayuda</a></li>
+				<li><a id="quejas" onclick="cerrarMenu()">Algún problema?</a></li>
+			</ul>
+
+		</div>
+
+	</header>
+
+	<div class="search">
+		<i class="fas fa-search"></i>
+
+		<form name="busqueda" action="">
+			<input name="buscar" id="buscar" type="text" placeholder="Buscar..." autofocus="" onfocusout="cerrarBuscar()" oninput="buscarNombre()">
+		</form>
+	</div>
+	
+	<section class="profile">
+	
+        <ul>
+        
+            <li>
+                <figure>
+                    <img src="img/user.png" width="100%" height="100%">
+                </figure>
+            </li>
+            
+            <li><input name="nombreActual" id="nombreActual" value="Nombre"></li>
+            
+            <li><input name="emailActual" id="emailActual" value="Email"></li>
+            
+            <li><input type="button" value="Save" onclick=""></li>
+            
+        </ul>
+	
+	</section>
+	
+</body>
+
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

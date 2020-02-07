@@ -18,6 +18,18 @@ $(document).ready(function(){
                 $(".busquedas").delay(800).fadeIn();
                 $("#like").hide();
             }
+            
+            if($(".quejas").is(":visible"))
+            {
+                $(".quejas").fadeOut();
+                $(".busquedas").delay(800).fadeIn();
+            }
+            
+            if($(".listaFavoritos").is(":visible"))
+            {
+                $(".listaFavoritos").fadeOut();
+                $(".busquedas").delay(800).fadeIn();
+            }
         }
         
     });
