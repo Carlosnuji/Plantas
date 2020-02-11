@@ -284,6 +284,22 @@ JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
 
             } // end if
 
+            /// Modificar perfil
+            if(mensaje["action"] == "modificarUser")
+            {
+
+                std::cout << "Modificar perfil" << std::endl;
+                resultado["id"] = mensaje["id"];
+
+                Usuario usuario("", "", "");
+                usuario.load(mensaje["idUsuario"]);
+
+                if(usuario.getNombre() != mensaje["nombre"]) usuario.update(mensaje["nombre"], mensaje["email"]);
+
+                resultado["resultado"][0] = usuario.toJSON();
+
+            }
+
         } // end if
 
     } // end if

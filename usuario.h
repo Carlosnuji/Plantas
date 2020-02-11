@@ -19,6 +19,7 @@ public:
     static Usuario load(std::string email, std::string password);
     static void remove(int id);
     void load(int id);
+    void update(std::string nombre, std::string email);
     int getId();
     std::string getNombre();
     std::string getPassword();

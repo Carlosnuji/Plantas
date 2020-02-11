@@ -10,6 +10,7 @@
 #include "queja.h"
 #include "favorito.h"
 
+
 int main()
 {
 

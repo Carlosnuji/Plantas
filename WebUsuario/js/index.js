@@ -12,6 +12,16 @@ class Usuario {
         return this._id;
     }
     
+    get nombre()
+    {
+        return this._nombre;
+    }
+    
+    get email()
+    {
+        return this._email;
+    }
+    
 }
 
 var usuario;
@@ -426,11 +436,43 @@ function cargarListaFav()
 //Cargar perfil
 function perfil()
 {
+    
     /// 1) Crear JSON que se envia al servidor
     var idMensaje = dameId();
     var idUsuario = usuario.id;
     var obj = {action:"perfil", id:idMensaje, idUsuario:idUsuario};
     socket.send(JSON.stringify(obj));
+    
+    /// 2) Crear el mensaje de respuesta que debe esperar el cliente y añadirlo a la lista de mensajes en espera
+    mensaje = new mensajeEspera(idMensaje);
+    mensaje.funcionEjecutar = function(resultado)
+    {
+        resultado.forEach(mostrarUltimasBusquedas);
+    
+        function mostrarUltimasBusquedas(item, index)
+        {
+            
+            document.getElementById("nombreActual").value = usuario.nombre;
+            document.getElementById("emailActual").value = usuario.email;
+            
+        }
+    }
+    mensajesEsperandoRespuesta.push(mensaje);
+    
+}
+
+// Modificar perfil
+function modificarPerfil()
+{
+    
+    /// 1) Crear JSON que se envia al servidor
+    var idMensaje = dameId();
+    var idUsuario = usuario.id;
+    var nombre = document.getElementById("nombreActual").value;
+    var email = document.getElementById("emailActual").value;
+    var obj = {action:"modificarUser", id:idMensaje, idUsuario:idUsuario, nombre:nombre, email:email};
+    socket.send(JSON.stringify(obj));
+    
 }
 
 //Mensajes JSON

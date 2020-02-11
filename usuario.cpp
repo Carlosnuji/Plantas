@@ -129,6 +129,19 @@ void Usuario::remove(int id)
 
 }
 
+void Usuario::update(std::string nombre, std::string email)
+{
+
+    QSqlQuery query;
+    query.prepare("UPDATE usuario set nombre=:nombre, email=:email where idusuario=:idusuario");
+
+    query.bindValue(":nombre", QString::fromStdString(nombre));
+    query.bindValue(":email", QString::fromStdString(email));
+    query.bindValue(":idusuario", m_id);
+    query.exec();
+
+}
+
 JSON Usuario::toJSON()
 {
 

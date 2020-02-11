@@ -38,7 +38,7 @@
 
 			<ul id="listaMenu">
 				<li><a id="favoritos" onclick="cerrarMenu();cargarListaFav()">Favoritos</a></li>
-				<li><a id="perfil" onclick="perfil()">Perfil</a></li>
+				<li><a id="perfil" onclick="perfil(); cerrarMenu();">Perfil</a></li>
 				<li><a>Ayuda</a></li>
 				<li><a id="quejas" onclick="cerrarMenu()">Algún problema?</a></li>
 			</ul>
@@ -182,7 +182,7 @@
             
             <li><input name="emailActual" id="emailActual" value="Email"></li>
             
-            <li><input type="button" value="Save" onclick=""></li>
+            <li><input type="button" value="Save" onclick="modificarPerfil()"></li>
             
         </ul>
 	
