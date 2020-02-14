@@ -14,7 +14,9 @@ class Db
 {
 public:
     Db();
+    bool isNumber(const std::string& s);
     bool init();
+    bool insert(const std::string nombreTabla, const std::vector<std::string>& campos, const std::vector<std::string>& valores);
 
 private:
     QSqlDatabase m_db;

@@ -13,7 +13,7 @@ Usuario::Usuario(std::string nombre, std::string password, std::string email)
 
 }
 
-void Usuario::save()
+bool Usuario::save()
 {
 
     QSqlQuery query;
@@ -39,9 +39,13 @@ void Usuario::save()
             int id = query.value("idusuario").toInt();
             this->m_id = id;
         }
-    }else
+
+        return true;
+    }
+    else
     {
         qDebug() << error;
+        return false;
     }
 
 }

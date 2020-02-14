@@ -1,9 +1,11 @@
-#include <iostream>
 #define DOCTEST_CONFIG_IMPLEMENT
+#include <QCoreApplication>
 #include "doctest.h"
+#include "app.h"
 
 int main(int argc, char** argv)
 {
+
     doctest::Context context;
 
     // defaults

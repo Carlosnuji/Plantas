@@ -1,23 +1,30 @@
 #include "app.h"
 #include "doctest.h"
 #include "db.h"
+#include <QDebug>
 
 App::App()
 {
 
 }
 
-int App::suma(int num1, int num2)
+TEST_CASE("Test base datos")
 {
 
-   return num1 + num2;
-
-}
-
-TEST_CASE("database")
-{
-
+    /// Iniciar base datos
     Db database;
     CHECK(database.init() == true);
 
+    /// Insert planta
+    std::vector<std::string> campos{"nombre", "nombreCientifico", "descripcion"};
+    std::vector<std::string> valores{"planta", "plantibiris", "descripcion planta"};
+    CHECK(database.insert("planta", campos, valores) == true);
+
+    /// Insert usuario
+    std::vector<std::string> campos1{"nombre", "password", "email"};
+    std::vector<std::string> valores1{"carlos", "carlos123", "carlos@gmail.com"};
+    CHECK(database.insert("usuario", campos1, valores1) == true);
+
 }
+
+

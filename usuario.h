@@ -15,7 +15,7 @@ class Usuario
 public:
     Usuario(std::string nombre, std::string password, std::string email);
     JSON toJSON();
-    void save();
+    bool save();
     static Usuario load(std::string email, std::string password);
     static void remove(int id);
     void load(int id);
