@@ -95,7 +95,7 @@ bool Db::insert(const std::string nombreTabla, const std::vector<std::string>& c
     }
     strQuery += ")";
 
-    std::cout << strQuery << std::endl;
+    //std::cout << strQuery << std::endl;
 
     /// 2. Ejecutar insert
     QSqlQuery query;

@@ -1,0 +1,11 @@
+prefix=/home/usuario/SimpleMail
+exec_prefix=${prefix}
+libdir=/home/usuario/SimpleMail/lib64
+includedir=/home/usuario/SimpleMail/include/simplemail2-qt5
+
+Name: simplemail2-qt5
+Description: SimpleMail library for Qt5
+Version: 2.0.0
+Requires: Qt5Core
+Libs: -L${libdir} -lSimpleMail2Qt5
+Cflags: -I${includedir}

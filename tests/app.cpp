@@ -1,6 +1,8 @@
 #include "app.h"
 #include "doctest.h"
 #include "db.h"
+#include "../usuario.h"
+#include "../usuario.cpp"
 #include <QDebug>
 
 App::App()
@@ -24,6 +26,14 @@ TEST_CASE("Test base datos")
     std::vector<std::string> campos1{"nombre", "password", "email"};
     std::vector<std::string> valores1{"carlos", "carlos123", "carlos@gmail.com"};
     CHECK(database.insert("usuario", campos1, valores1) == true);
+
+}
+
+TEST_CASE("Usuario")
+{
+
+    Usuario usuario("prueba", "prueba123", "prueba@gmail.com");
+    CHECK(usuario.getNombre() == "prueba");
 
 }
 

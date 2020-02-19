@@ -12,3 +12,5 @@ SOURCES += \
 HEADERS += \
     app.h \
     db.h
+
+LIBS += -pthread -lz -lssl -lcrypto
