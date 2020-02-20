@@ -154,6 +154,7 @@ JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
             if(mensaje["action"] == "crearUsuario")
             {
 
+                /// 1. Insert Tabla usuario
                 std::cout << "Crear usuario" << std::endl;
                 resultado["id"] = mensaje["id"];
 
@@ -164,6 +165,17 @@ JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
                 Usuario usuario(nombre, pass, email);
                 usuario.save();
 
+                /// 2. Generar Token y insert Tabla token
+                Token token;
+                QString tokenString = token.generateToken();
+                token.insert(tokenString, usuario.getId());
+
+                /// 3. Enviar email y insert Tabla envio_email
+                Email e;
+                e.sendEmail(usuario.getEmail(),"Verificar email","www.google.com");
+                e.insert(usuario.getId());
+
+                /// 4. Enviar JSON
                 JSON usuarioJSON = usuario.toJSON();
                 resultado["resultado"][0] = usuarioJSON;
 

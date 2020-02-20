@@ -84,9 +84,11 @@ Usuario Usuario::load(std::string email, std::string password)
             QString nombre = query.value("nombre").toString();
             QString pass = query.value("password").toString();
             QString email = query.value("email").toString();
+            int status = query.value("status").toInt();
 
             Usuario user(nombre.toUtf8().constData(), pass.toUtf8().constData(), email.toUtf8().constData());
             user.m_id = query.value("idusuario").toInt();
+            user.m_status = status;
             return user;
         }
 
@@ -154,6 +156,7 @@ JSON Usuario::toJSON()
     usuario["nombre"] = m_nombre;
     usuario["pass"] = m_password;
     usuario["email"] = m_email;
+    usuario["status"] = m_status;
 
     return usuario;
 
@@ -163,7 +166,7 @@ int Usuario::getId(){ return m_id; }
 std::string Usuario::getNombre(){ return m_nombre; }
 std::string Usuario::getPassword(){ return m_password; }
 std::string Usuario::getEmail(){ return m_email; }
-
+int Usuario::getStatus(){ return m_status; }
 
 
 

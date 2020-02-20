@@ -24,12 +24,14 @@ public:
     std::string getNombre();
     std::string getPassword();
     std::string getEmail();
+    int getStatus();
 
 private:
     int m_id{0};
     std::string m_nombre{""};
     std::string m_password{""};
     std::string m_email{""};
+    int m_status{0};
 
 };
 

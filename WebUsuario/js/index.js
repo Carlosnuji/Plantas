@@ -339,7 +339,7 @@ function cargarUsuario(idUsuario)
         {
             usuario = new Usuario(item.id, item.nombre, item.pass, item.email);
             
-            if(usuario.id == 0)
+            if(usuario.id == 0 || item.status==0)
             {
                 document.getElementById("errorLogin").style.display = "flex";
             }

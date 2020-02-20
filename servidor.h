@@ -10,6 +10,8 @@
 #include "usuario.h"
 #include "queja.h"
 #include "favorito.h"
+#include "token.h"
+#include "email.h"
 
 using JSON = nlohmann::json;
 

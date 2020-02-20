@@ -3,6 +3,8 @@
 
 #include <string>
 #include <map>
+#include <QSqlQuery>
+#include <QSqlRecord>
 
 class Email
 {
@@ -10,6 +12,7 @@ class Email
 public:
     Email();
     void sendEmail(std::string toEmail, std::string subject, std::string texto);
+    void insert(int idusuario);
 
 private:
     int m_puerto{0};

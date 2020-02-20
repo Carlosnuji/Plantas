@@ -10,7 +10,7 @@
 #include "queja.h"
 #include "favorito.h"
 #include "email.h"
-
+#include "token.h"
 
 int main()
 {
@@ -18,9 +18,6 @@ int main()
     /// 1) Abrir conexión con la base de datos
     Conexion con;
     con.open();
-
-    Email e;
-    e.sendEmail("carlosnunez@estudiante.edib.es","Patata","prueba");
 
     /// 2) Iniciar servidor
     Servidor servidor(9990);

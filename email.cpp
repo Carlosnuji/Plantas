@@ -14,6 +14,17 @@ Email::Email()
 
 }
 
+void Email::insert(int idusuario)
+{
+
+    QSqlQuery query;
+    query.prepare("INSERT INTO envio_email (idusuario) VALUES (:idusuario)");
+
+    query.bindValue(":idusuario", QString::number(idusuario));
+    query.exec();
+
+}
+
 void Email::sendEmail(std::string toEmail, std::string subject, std::string texto)
 {
 
