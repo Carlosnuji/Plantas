@@ -172,8 +172,10 @@ JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
 
                 /// 3. Enviar email y insert Tabla envio_email
                 Email e;
-                e.sendEmail(usuario.getEmail(),"Verificar email","www.google.com");
+                std::string tokn = tokenString.toUtf8().constData();
+                e.sendEmail(usuario.getEmail(),"Verificar email","https://localhost/?token=" + tokn);
                 e.insert(usuario.getId());
+
 
                 /// 4. Enviar JSON
                 JSON usuarioJSON = usuario.toJSON();
@@ -306,9 +308,25 @@ JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
                 Usuario usuario("", "", "");
                 usuario.load(mensaje["idUsuario"]);
 
-                if(usuario.getNombre() != mensaje["nombre"]) usuario.update(mensaje["nombre"], mensaje["email"]);
+                if(usuario.getNombre() != mensaje["nombre"]) usuario.update(mensaje["nombre"], mensaje["email"], 1);
 
                 resultado["resultado"][0] = usuario.toJSON();
+
+            }
+
+            /// Check token
+            if(mensaje["action"] == "checkToken")
+            {
+
+                std::cout << "Comprobar token" <<std::endl;
+                resultado["id"] = mensaje["id"];
+
+                bool correct = Token::checkToken(mensaje["token"]);
+
+                JSON respuesta;
+                respuesta["tokenCorrect"] = correct;
+
+                resultado["resultado"][0] = respuesta;
 
             }
 
@@ -324,9 +342,6 @@ bool Servidor::exists(const JSON& json, const std::string& key)
 {
     return json.find(key) != json.end();
 }
-
-
-
 
 
 

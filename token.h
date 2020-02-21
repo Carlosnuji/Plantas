@@ -14,6 +14,7 @@ public:
     Token();
     QString generateToken();
     void insert(QString uuid, int idusuario);
+    static bool checkToken(std::string token);
 
 private:
 

@@ -1,5 +1,7 @@
 #include "token.h"
 #include <QVariant>
+#include <iostream>
+#include "usuario.h"
 
 
 Token::Token()
@@ -26,3 +28,54 @@ void Token::insert(QString uuid, int idusuario)
     query.exec();
 
 }
+
+bool Token::checkToken(std::string token)
+{
+
+    QSqlQuery query;
+    query.prepare("SELECT * from token WHERE uuid=:token");
+
+    query.bindValue(":token", QString::fromUtf8(token.c_str()));
+
+    bool resultado = query.exec();
+
+    if(resultado && query.size() >= 1)
+    {
+
+        query.next();
+        int idUsuario = query.value("idusuario").toInt();
+
+        Usuario user("","","");
+        user.load(idUsuario);
+
+        user.update(user.getNombre(), user.getEmail(), 1);
+
+        return true;
+
+    }
+
+    return  false;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

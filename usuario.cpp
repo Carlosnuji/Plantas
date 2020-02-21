@@ -114,11 +114,13 @@ void Usuario::load(int id)
         QString nombre = query.value("nombre").toString();
         QString pass = query.value("password").toString();
         QString email = query.value("email").toString();
+        int status = query.value("status").toInt();
 
         m_id = query.value("idusuario").toInt();
         m_nombre = nombre.toUtf8().constData();
         m_password = pass.toUtf8().constData();
         m_email = email.toUtf8().constData();
+        m_status = status;
 
     }
 
@@ -135,15 +137,16 @@ void Usuario::remove(int id)
 
 }
 
-void Usuario::update(std::string nombre, std::string email)
+void Usuario::update(std::string nombre, std::string email, int status)
 {
 
     QSqlQuery query;
-    query.prepare("UPDATE usuario set nombre=:nombre, email=:email where idusuario=:idusuario");
+    query.prepare("UPDATE usuario set nombre=:nombre, email=:email, status=:status where idusuario=:idusuario");
 
     query.bindValue(":nombre", QString::fromStdString(nombre));
     query.bindValue(":email", QString::fromStdString(email));
     query.bindValue(":idusuario", m_id);
+    query.bindValue(":status", status);
     query.exec();
 
 }

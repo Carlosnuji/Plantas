@@ -46,6 +46,8 @@ void Email::sendEmail(std::string toEmail, std::string subject, std::string text
 
     sender.sendMail(message);
 
+    sender.quit();
+
 }
 
 void Email::loadProperties()

@@ -183,6 +183,18 @@ div.search form, div.search form input{
     background-color: #d9534f;
     color: white;
 }
+.login #verificado{
+    display: none;
+    justify-content:center;
+    padding-top: 1rem;
+}
+.login #verificado p{
+    padding: 1rem;
+    border: 1px solid #78c17d;
+    border-radius: 3px;
+    background-color: #78c17d;
+    color: white;
+}
 /* Fin Section login */
 
 /* Section regsiter */

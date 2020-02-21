@@ -195,6 +195,35 @@ socket.onopen = function(event)
         }
     }
     mensajesEsperandoRespuesta.push(mensaje);
+    
+    /// Comprobar si hay token y enviar JSON
+    var urlString = window.location.href;
+    var url = new URL(urlString);
+    var token = url.searchParams.get("token");
+    
+    
+    if(token!=null)
+    {
+        
+        var idMensaje = dameId();
+        var obj = {action:"checkToken", id:idMensaje, token:token};
+        socket.send(JSON.stringify(obj));
+        
+        mensaje = new mensajeEspera(idMensaje);
+    
+        mensaje.funcionEjecutar = function(resultado)
+        {
+            
+            if(resultado[0].tokenCorrect == true)
+            {
+                document.getElementById("verificado").style.display = "block";
+            }
+            
+        }
+        mensajesEsperandoRespuesta.push(mensaje); 
+            
+    }
+    
 };
 
 socket.onclose = function(event)
