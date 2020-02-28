@@ -55,7 +55,8 @@ bool Token::checkToken(std::string token)
         Usuario user("","","");
         user.load(idUsuario);
 
-        user.update(user.getNombre(), user.getEmail(), 1);
+        user.setStatus(1);
+        user.update();
 
         return true;
 

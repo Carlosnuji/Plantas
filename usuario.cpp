@@ -1,8 +1,4 @@
 #include "usuario.h"
-#include <QVariant>
-#include <QString>
-#include <QDebug>
-#include <QSqlError>
 
 Usuario::Usuario(std::string nombre, std::string password, std::string email)
 {
@@ -99,7 +95,7 @@ Usuario Usuario::load(std::string email, std::string password)
 
 }
 
-bool Usuario::load(int id)
+bool Usuario::load(const int id)
 {
 
     QSqlQuery query;
@@ -141,17 +137,19 @@ void Usuario::remove(int id)
 
 }
 
-void Usuario::update(std::string nombre, std::string email, int status)
+bool Usuario::update()
 {
 
     QSqlQuery query;
     query.prepare("UPDATE usuario set nombre=:nombre, email=:email, status=:status where idusuario=:idusuario");
 
-    query.bindValue(":nombre", QString::fromStdString(nombre));
-    query.bindValue(":email", QString::fromStdString(email));
+    query.bindValue(":nombre", QString::fromStdString(m_nombre));
+    query.bindValue(":email", QString::fromStdString(m_email));
     query.bindValue(":idusuario", m_id);
-    query.bindValue(":status", status);
+    query.bindValue(":status", m_status);
     query.exec();
+
+    return true;
 
 }
 
@@ -175,6 +173,9 @@ std::string Usuario::getPassword(){ return m_password; }
 std::string Usuario::getEmail(){ return m_email; }
 int Usuario::getStatus(){ return m_status; }
 
+void Usuario::setNombre(std::string nombre){ m_nombre = nombre; }
+void Usuario::setEmail(std::string email){ m_email = email; }
+void Usuario::setStatus(int status){ m_status= status; }
 
 
 

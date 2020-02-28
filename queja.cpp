@@ -1,8 +1,4 @@
 #include "queja.h"
-#include <QString>
-#include <QVariant>
-#include <QSqlError>
-#include <QDebug>
 
 Queja::Queja(int idUsuario, std::string queja)
 {

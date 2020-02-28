@@ -3,8 +3,7 @@
 
 #include <string>
 #include <list>
-#include <QSqlQuery>
-#include <QSqlRecord>
+#include "basedatos.h"
 #include "json.hpp"
 
 using JSON = nlohmann::json;
@@ -26,7 +25,7 @@ using JSON = nlohmann::json;
  * }
  * @endcode
  */
-class Planta
+class Planta : public BaseDatos
 {
 
 public:
@@ -61,7 +60,7 @@ public:
      * la información de la planta.
      * @param id - Id de la planta de la base de datos.
      */
-    bool load(int id);
+    bool load(const int id);
     /**
      * @brief Elimina una planta de la base de datos.
      *
@@ -78,7 +77,6 @@ public:
      * @return - Lista de plantas que ha encontrado.
      */
     static std::list<Planta> find(std::string nombre);
-    ~Planta();
     /**
      * @brief Devuelve el id de la planta;
      * @return Id de la planta.

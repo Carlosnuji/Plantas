@@ -1,8 +1,4 @@
 #include "planta.h"
-#include <QVariant>
-#include <QString>
-#include <QSqlError>
-#include <QDebug>
 
 Planta::Planta(std::string nombre, std::string nombreCientifico, std::string descripcion)
 {
@@ -12,8 +8,6 @@ Planta::Planta(std::string nombre, std::string nombreCientifico, std::string des
     this->m_descripcion = descripcion;
 
 }
-
-Planta::~Planta(){}
 
 bool Planta::save()
 {
@@ -62,7 +56,7 @@ Planta Planta::load(std::string nombre, std::string nombreCientifico)
 
 }
 
-bool Planta::load(int id)
+bool Planta::load(const int id)
 {
 
     QSqlQuery query;

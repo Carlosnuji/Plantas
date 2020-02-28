@@ -11,6 +11,7 @@
 #include "favorito.h"
 #include "email.h"
 #include "token.h"
+#include <QDebug>
 
 int main()
 {

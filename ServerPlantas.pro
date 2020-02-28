@@ -13,7 +13,8 @@ SOURCES += \
     queja.cpp \
     favorito.cpp \
     email.cpp \
-    token.cpp
+    token.cpp \
+    basedatos.cpp
 
 LIBS += -pthread -lz -lssl -lcrypto
 
@@ -27,7 +28,8 @@ HEADERS += \
     queja.h \
     favorito.h \
     email.h \
-    token.h
+    token.h \
+    basedatos.h
 
 win32:CONFIG(release, debug|release): LIBS += -L$$PWD/websocketLib/lib/release/ -lixwebsocket
 else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/websocketLib/lib/debug/ -lixwebsocket

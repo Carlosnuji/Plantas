@@ -3,8 +3,7 @@
 
 #include <string>
 #include <list>
-#include <QSqlQuery>
-#include <QSqlRecord>
+#include "basedatos.h"
 #include "json.hpp"
 
 using JSON = nlohmann::json;
@@ -27,7 +26,7 @@ using JSON = nlohmann::json;
  * @endcode
  */
 
-class Queja
+class Queja : public BaseDatos
 {
 
 public:
@@ -52,7 +51,7 @@ public:
      * las propiedades de la queja.
      * @param id - Id de la queja en la base de datos.
      */
-    bool load(int id);
+    bool load(const int id);
     /**
      * @brief Elimina una queja de la base de datos.
      *

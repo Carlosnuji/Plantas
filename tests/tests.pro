@@ -12,7 +12,8 @@ SOURCES += \
     ../planta.cpp \
     ../token.cpp \
     ../queja.cpp \
-    ../favorito.cpp
+    ../favorito.cpp \
+    ../basedatos.cpp
 
 HEADERS += \
     app.h \
@@ -21,7 +22,8 @@ HEADERS += \
     ../planta.h \
     ../token.h \
     ../queja.h \
-    ../favorito.h
+    ../favorito.h \
+    ../basedatos.h
 
 LIBS += -pthread -lz -lssl -lcrypto
 

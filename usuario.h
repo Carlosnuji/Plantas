@@ -3,8 +3,7 @@
 
 #include <string>
 #include <list>
-#include <QSqlQuery>
-#include <QSqlRecord>
+#include "basedatos.h"
 #include "json.hpp"
 
 using JSON = nlohmann::json;
@@ -27,7 +26,7 @@ using JSON = nlohmann::json;
  * @endcode
  */
 
-class Usuario
+class Usuario : public BaseDatos
 {
 
 public:
@@ -70,7 +69,7 @@ public:
      * del respectivo usuario.
      * @param id - Id del usuario.
      */
-    bool load(int id);
+    bool load(const int id);
     /**
      * @brief Actualiza las propiedades del usuario en la base de datos.
      *
@@ -80,7 +79,7 @@ public:
      * @param email - Email del usuario.
      * @param status - Estado del usuario.
      */
-    void update(std::string nombre, std::string email, int status);
+    bool update();
     /**
      * @brief Obtener el id del usuario.
      * @return Id del usuario.
@@ -106,6 +105,9 @@ public:
      * @return Status del usuario.
      */
     int getStatus();
+    void setNombre(std::string nombre);
+    void setEmail(std::string email);
+    void setStatus(int status);
 
 private:
     /**

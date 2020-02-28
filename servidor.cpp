@@ -425,7 +425,7 @@ JSON Servidor::modificarPerfil(const JSON& mensaje)
     Usuario usuario("", "", "");
     usuario.load(mensaje["idUsuario"]);
 
-    if(usuario.getNombre() != mensaje["nombre"]) usuario.update(mensaje["nombre"], mensaje["email"], 1);
+    if(usuario.getNombre() != mensaje["nombre"]) usuario.update();
 
     resultado["resultado"][0] = usuario.toJSON();
 
