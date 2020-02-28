@@ -61,7 +61,7 @@ bool Favorito::check()
 
 }
 
-void Favorito::load(int idUsuario, int idPlanta)
+bool Favorito::load(int idUsuario, int idPlanta)
 {
 
     QSqlQuery query;
@@ -94,7 +94,11 @@ void Favorito::load(int idUsuario, int idPlanta)
 
         } // end if
 
+        return true;
+
     } // end if
+
+    return false;
 
 }
 

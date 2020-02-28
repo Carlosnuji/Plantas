@@ -1,6 +1,8 @@
 #include "planta.h"
 #include <QVariant>
 #include <QString>
+#include <QSqlError>
+#include <QDebug>
 
 Planta::Planta(std::string nombre, std::string nombreCientifico, std::string descripcion)
 {
@@ -13,7 +15,7 @@ Planta::Planta(std::string nombre, std::string nombreCientifico, std::string des
 
 Planta::~Planta(){}
 
-void Planta::save()
+bool Planta::save()
 {
 
     QSqlQuery query;
@@ -26,6 +28,13 @@ void Planta::save()
     query.bindValue(":nomCien", nombreCientifico);
     query.bindValue(":desc", descripcion);
     query.exec();
+
+    QString error (query.lastError().text());
+
+    if(error == " ") return true;
+    else qDebug() << query.lastError().text();
+
+    return false;
 
 }
 
@@ -53,7 +62,7 @@ Planta Planta::load(std::string nombre, std::string nombreCientifico)
 
 }
 
-void Planta::load(int id)
+bool Planta::load(int id)
 {
 
     QSqlQuery query;
@@ -74,7 +83,11 @@ void Planta::load(int id)
         m_nombreCientifico = nombreCientifico.toUtf8().constData();
         m_descripcion = descripcion.toUtf8().constData();
 
+        return true;
+
     }
+
+    return false;
 
 }
 

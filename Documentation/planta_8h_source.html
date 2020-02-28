@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Proyecto Plantas: Fichero Fuente planta.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Proyecto Plantas
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">planta.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef PLANTA_H</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define PLANTA_H</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;list&gt;</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;QSqlQuery&gt;</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;QSqlRecord&gt;</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &quot;json.hpp&quot;</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">using</span> <a class="code" href="classnlohmann_1_1basic__json.html">JSON</a> = <a class="code" href="namespacenlohmann.html#a2bfd99e845a2e5cd90aeaf1b1431f474">nlohmann::json</a>;</div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div><div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="classPlanta.html">   29</a></span>&#160;<span class="keyword">class </span><a class="code" href="classPlanta.html">Planta</a></div><div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;{</div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="keyword">public</span>:</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="classPlanta.html">Planta</a>(std::string nombre, std::string nombreCientifico, std::string descripcion);</div><div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="classnlohmann_1_1basic__json.html">JSON</a> <a class="code" href="classPlanta.html#a64832bfa46d2b934076b6fb94846702b">toJSON</a>();</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classPlanta.html#af1b5aa8bdeb07ccb43f35aaf78839793">save</a>();</div><div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keyword">static</span> <a class="code" href="classPlanta.html">Planta</a> <a class="code" href="classPlanta.html#a064b0d432364f216f5fd6054e53cb51a">load</a>(std::string nombre, std::string nombreCientifico);</div><div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classPlanta.html#a064b0d432364f216f5fd6054e53cb51a">load</a>(<span class="keywordtype">int</span> <span class="keywordtype">id</span>);</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">void</span> <span class="keyword">remove</span>(<span class="keywordtype">int</span> id);</div><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keyword">static</span> std::list&lt;Planta&gt; <a class="code" href="classPlanta.html#a7a84e6eb802bd9d18f882cad90335c04">find</a>(std::string nombre);</div><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    ~<a class="code" href="classPlanta.html">Planta</a>();</div><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classPlanta.html#a333a707f6e58b803feb192d6bfa4fe95">getId</a>();</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    std::string <a class="code" href="classPlanta.html#a6ed49759f72ab7dc2f99c923ae07687a">getNombre</a>();</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    std::string <a class="code" href="classPlanta.html#af9e67b00e094e0f074d1ac983f218e9e">getNombreCientifico</a>();</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    std::string <a class="code" href="classPlanta.html#a6118c2f6787023a68a2f650585c89e2b">getDescripcion</a>();</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;<span class="keyword">private</span>:</div><div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="classPlanta.html#ad8bf40136f793ce2b15c6cc7dcbcd468">  107</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classPlanta.html#ad8bf40136f793ce2b15c6cc7dcbcd468">m_id</a>{0};</div><div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="classPlanta.html#a1c4c2aeebe462fdfdd53d8048f449082">  111</a></span>&#160;    std::string <a class="code" href="classPlanta.html#a1c4c2aeebe462fdfdd53d8048f449082">m_nombre</a>{<span class="stringliteral">&quot;&quot;</span>};</div><div class="line"><a name="l00115"></a><span class="lineno"><a class="line" href="classPlanta.html#a9bb4c3101a261a8c9e8dc7481a6676fe">  115</a></span>&#160;    std::string <a class="code" href="classPlanta.html#a9bb4c3101a261a8c9e8dc7481a6676fe">m_nombreCientifico</a>{<span class="stringliteral">&quot;&quot;</span>};</div><div class="line"><a name="l00119"></a><span class="lineno"><a class="line" href="classPlanta.html#a4006033e2ce0a82b319385030b123c62">  119</a></span>&#160;    std::string <a class="code" href="classPlanta.html#a4006033e2ce0a82b319385030b123c62">m_descripcion</a>{<span class="stringliteral">&quot;&quot;</span>};</div><div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;</div><div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;};</div><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;<span class="preprocessor">#endif // PLANTA_H</span></div><div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;</div><div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;</div><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;</div><div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;</div><div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;</div><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;</div><div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;</div><div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;</div><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div><div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;</div><div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;</div><div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;</div><div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;</div><div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;</div><div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;</div><div class="ttc" id="classPlanta_html_a1c4c2aeebe462fdfdd53d8048f449082"><div class="ttname"><a href="classPlanta.html#a1c4c2aeebe462fdfdd53d8048f449082">Planta::m_nombre</a></div><div class="ttdeci">std::string m_nombre</div><div class="ttdoc">Nombre de la planta. </div><div class="ttdef"><b>Definition:</b> planta.h:111</div></div>
+<div class="ttc" id="classPlanta_html_af9e67b00e094e0f074d1ac983f218e9e"><div class="ttname"><a href="classPlanta.html#af9e67b00e094e0f074d1ac983f218e9e">Planta::getNombreCientifico</a></div><div class="ttdeci">std::string getNombreCientifico()</div><div class="ttdoc">Obtener el nombre científico. </div><div class="ttdef"><b>Definition:</b> planta.cpp:141</div></div>
+<div class="ttc" id="classPlanta_html_a6118c2f6787023a68a2f650585c89e2b"><div class="ttname"><a href="classPlanta.html#a6118c2f6787023a68a2f650585c89e2b">Planta::getDescripcion</a></div><div class="ttdeci">std::string getDescripcion()</div><div class="ttdoc">Obtener descripción de la planta. </div><div class="ttdef"><b>Definition:</b> planta.cpp:143</div></div>
+<div class="ttc" id="classPlanta_html_a6ed49759f72ab7dc2f99c923ae07687a"><div class="ttname"><a href="classPlanta.html#a6ed49759f72ab7dc2f99c923ae07687a">Planta::getNombre</a></div><div class="ttdeci">std::string getNombre()</div><div class="ttdoc">Obtener el nombre de la planta. </div><div class="ttdef"><b>Definition:</b> planta.cpp:139</div></div>
+<div class="ttc" id="classnlohmann_1_1basic__json_html"><div class="ttname"><a href="classnlohmann_1_1basic__json.html">nlohmann::basic_json</a></div><div class="ttdoc">a class to store JSON values </div><div class="ttdef"><b>Definition:</b> json.hpp:2421</div></div>
+<div class="ttc" id="classPlanta_html"><div class="ttname"><a href="classPlanta.html">Planta</a></div><div class="ttdoc">Clase para el manejo de las plantas de la base de datos. </div><div class="ttdef"><b>Definition:</b> planta.h:29</div></div>
+<div class="ttc" id="classPlanta_html_a333a707f6e58b803feb192d6bfa4fe95"><div class="ttname"><a href="classPlanta.html#a333a707f6e58b803feb192d6bfa4fe95">Planta::getId</a></div><div class="ttdeci">int getId()</div><div class="ttdoc">Devuelve el id de la planta;. </div><div class="ttdef"><b>Definition:</b> planta.cpp:137</div></div>
+<div class="ttc" id="classPlanta_html_a7a84e6eb802bd9d18f882cad90335c04"><div class="ttname"><a href="classPlanta.html#a7a84e6eb802bd9d18f882cad90335c04">Planta::find</a></div><div class="ttdeci">static std::list&lt; Planta &gt; find(std::string nombre)</div><div class="ttdoc">Busca todas las plantas con el nombre que se le pase. </div><div class="ttdef"><b>Definition:</b> planta.cpp:92</div></div>
+<div class="ttc" id="classPlanta_html_a9bb4c3101a261a8c9e8dc7481a6676fe"><div class="ttname"><a href="classPlanta.html#a9bb4c3101a261a8c9e8dc7481a6676fe">Planta::m_nombreCientifico</a></div><div class="ttdeci">std::string m_nombreCientifico</div><div class="ttdoc">Nombre científico de la planta. </div><div class="ttdef"><b>Definition:</b> planta.h:115</div></div>
+<div class="ttc" id="classPlanta_html_af1b5aa8bdeb07ccb43f35aaf78839793"><div class="ttname"><a href="classPlanta.html#af1b5aa8bdeb07ccb43f35aaf78839793">Planta::save</a></div><div class="ttdeci">void save()</div><div class="ttdoc">Guarda la planta en la base de datos. </div><div class="ttdef"><b>Definition:</b> planta.cpp:16</div></div>
+<div class="ttc" id="namespacenlohmann_html_a2bfd99e845a2e5cd90aeaf1b1431f474"><div class="ttname"><a href="namespacenlohmann.html#a2bfd99e845a2e5cd90aeaf1b1431f474">nlohmann::json</a></div><div class="ttdeci">basic_json&lt;&gt; json</div><div class="ttdoc">default JSON class </div><div class="ttdef"><b>Definition:</b> json.hpp:2445</div></div>
+<div class="ttc" id="classPlanta_html_a64832bfa46d2b934076b6fb94846702b"><div class="ttname"><a href="classPlanta.html#a64832bfa46d2b934076b6fb94846702b">Planta::toJSON</a></div><div class="ttdeci">JSON toJSON()</div><div class="ttdoc">Crea JSON de la planta. </div><div class="ttdef"><b>Definition:</b> planta.cpp:124</div></div>
+<div class="ttc" id="classPlanta_html_a064b0d432364f216f5fd6054e53cb51a"><div class="ttname"><a href="classPlanta.html#a064b0d432364f216f5fd6054e53cb51a">Planta::load</a></div><div class="ttdeci">static Planta load(std::string nombre, std::string nombreCientifico)</div><div class="ttdoc">Carga una planta de la base de datos. </div><div class="ttdef"><b>Definition:</b> planta.cpp:32</div></div>
+<div class="ttc" id="classPlanta_html_ad8bf40136f793ce2b15c6cc7dcbcd468"><div class="ttname"><a href="classPlanta.html#ad8bf40136f793ce2b15c6cc7dcbcd468">Planta::m_id</a></div><div class="ttdeci">int m_id</div><div class="ttdoc">Id de la planta. </div><div class="ttdef"><b>Definition:</b> planta.h:107</div></div>
+<div class="ttc" id="classPlanta_html_a4006033e2ce0a82b319385030b123c62"><div class="ttname"><a href="classPlanta.html#a4006033e2ce0a82b319385030b123c62">Planta::m_descripcion</a></div><div class="ttdeci">std::string m_descripcion</div><div class="ttdoc">Descripción de la planta. </div><div class="ttdef"><b>Definition:</b> planta.h:119</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

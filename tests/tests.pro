@@ -7,10 +7,21 @@ QT       += sql
 SOURCES += \
         main.cpp \
     app.cpp \
-    db.cpp
+    db.cpp \
+    ../usuario.cpp \
+    ../planta.cpp \
+    ../token.cpp \
+    ../queja.cpp \
+    ../favorito.cpp
 
 HEADERS += \
     app.h \
-    db.h
+    db.h \
+    ../usuario.h \
+    ../planta.h \
+    ../token.h \
+    ../queja.h \
+    ../favorito.h
 
 LIBS += -pthread -lz -lssl -lcrypto
+

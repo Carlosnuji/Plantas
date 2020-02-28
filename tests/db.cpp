@@ -42,11 +42,14 @@ bool Db::init()
                 m_db.setDatabaseName("testplantas");
                 m_db.open();
 
+                QSqlQuery extension("CREATE EXTENSION pgcrypto;", m_db);
+
                 QString createUser = "CREATE TABLE usuario ( \
                                   idusuario serial PRIMARY KEY, \
                                   nombre VARCHAR (50) UNIQUE NOT NULL, \
                                   password TEXT NOT NULL, \
-                                  email VARCHAR (100) UNIQUE NOT NULL)";
+                                  email VARCHAR (100) UNIQUE NOT NULL, \
+                                  status INTEGER )";
 
                 QSqlQuery query1 (createUser, m_db);
 
@@ -58,6 +61,28 @@ bool Db::init()
                                   imagen BYTEA )";
 
                 QSqlQuery query2 (createPlanta, m_db);
+
+                QString createToken = "CREATE TABLE token ( \
+                                    idtoken serial PRIMARY KEY, \
+                                    uuid TEXT, \
+                                    idusuario INTEGER, \
+                                    date date default CURRENT_DATE )";
+
+                QSqlQuery query3 (createToken, m_db);
+
+                QString createQueja = "CREATE TABLE queja ( \
+                                    idqueja serial PRIMARY KEY, \
+                                    idusuario INTEGER, \
+                                    queja TEXT )";
+
+                QSqlQuery query4 (createQueja, m_db);
+
+                QString createFavorito = "CREATE TABLE favorito ( \
+                                        idfavorito serial PRIMARY KEY, \
+                                        idusuario INTEGER, \
+                                        idplanta INTEGER )";
+
+                QSqlQuery query5 (createFavorito, m_db);
 
                 init = true;
             }

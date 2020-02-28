@@ -17,7 +17,7 @@ QString Token::generateToken()
 
 }
 
-void Token::insert(QString uuid, int idusuario)
+bool Token::insert(QString uuid, int idusuario)
 {
 
     QSqlQuery query;
@@ -26,6 +26,13 @@ void Token::insert(QString uuid, int idusuario)
     query.bindValue(":uuid", uuid);
     query.bindValue(":idusuario", QString::number(idusuario));
     query.exec();
+
+    QString error (query.lastError().text());
+
+    if(error == " ") return true;
+    else qDebug() << query.lastError().text();
+
+    return false;
 
 }
 

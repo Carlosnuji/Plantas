@@ -99,7 +99,7 @@ Usuario Usuario::load(std::string email, std::string password)
 
 }
 
-void Usuario::load(int id)
+bool Usuario::load(int id)
 {
 
     QSqlQuery query;
@@ -122,7 +122,11 @@ void Usuario::load(int id)
         m_email = email.toUtf8().constData();
         m_status = status;
 
+        return true;
+
     }
+
+    return false;
 
 }
 

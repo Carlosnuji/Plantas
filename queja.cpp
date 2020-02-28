@@ -12,7 +12,7 @@ Queja::Queja(int idUsuario, std::string queja)
 
 }
 
-void Queja::save()
+bool Queja::save()
 {
 
     QSqlQuery query;
@@ -36,15 +36,19 @@ void Queja::save()
             this->m_id = id;
         }
 
+        return true;
+
     } // end if
     else
     {
         qDebug() << error;
+
+        return false;
     }
 
 }
 
-void Queja::load(int id)
+bool Queja::load(int id)
 {
 
     QSqlQuery query;
@@ -59,7 +63,11 @@ void Queja::load(int id)
         m_idUsuario = query.value("idusuario").toInt();
         QString queja = query.value("queja").toString();
         setQueja(queja.toUtf8().constData());
+
+        return true;
     }
+
+    return false;
 
 }
 

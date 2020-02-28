@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Proyecto Plantas: Fichero Fuente favorito.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Proyecto Plantas
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">favorito.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef FAVORITO_H</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define FAVORITO_H</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div><div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div><div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;list&gt;</span></div><div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;QSqlQuery&gt;</span></div><div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;QSqlRecord&gt;</span></div><div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &quot;json.hpp&quot;</span></div><div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;planta.h&quot;</span></div><div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div><div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="keyword">using</span> <a class="code" href="classnlohmann_1_1basic__json.html">JSON</a> = <a class="code" href="namespacenlohmann.html#a2bfd99e845a2e5cd90aeaf1b1431f474">nlohmann::json</a>;</div><div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;</div><div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="classFavorito.html">   30</a></span>&#160;<span class="keyword">class </span><a class="code" href="classFavorito.html">Favorito</a></div><div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;{</div><div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div><div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">public</span>:</div><div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="classFavorito.html">Favorito</a>(<span class="keywordtype">int</span> <a class="code" href="classFavorito.html#ae46fcb43e096664c8485b3deca7c4b8b">m_idUsuario</a>, <span class="keywordtype">int</span> <a class="code" href="classFavorito.html#a79d893b15156a660ad61b0d7ca646f78">m_idPlanta</a>);</div><div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="classnlohmann_1_1basic__json.html">JSON</a> <a class="code" href="classFavorito.html#abceb6e2513bfaa92b735d0145546a210">toJSON</a>();</div><div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classFavorito.html#a65ef8e6ab70f701c7d980aa794c15a5d">load</a>(<span class="keywordtype">int</span> idUsuario, <span class="keywordtype">int</span> idPlanta);</div><div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classFavorito.html#a7464ce687f8c52b34b624eb67244b858">check</a>();</div><div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="keyword">static</span> std::list&lt;Planta&gt; <a class="code" href="classFavorito.html#a2a1c0b70c9b644b675e10ea27e1556e3">find</a>(<span class="keywordtype">int</span> idUsuario);</div><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classFavorito.html#a06a76f68db70436ee8d79bce3ed2302a">getIdUsuario</a>();</div><div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classFavorito.html#a9f0b43ffb79a931c1d52ce96f0e67a90">getIdPlanta</a>();</div><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div><div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="keyword">private</span>:</div><div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="classFavorito.html#ab79a65c60a346ad66624048c7bb9babd">   82</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classFavorito.html#ab79a65c60a346ad66624048c7bb9babd">m_id</a>{0};</div><div class="line"><a name="l00086"></a><span class="lineno"><a class="line" href="classFavorito.html#ae46fcb43e096664c8485b3deca7c4b8b">   86</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classFavorito.html#ae46fcb43e096664c8485b3deca7c4b8b">m_idUsuario</a>{0};</div><div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="classFavorito.html#a79d893b15156a660ad61b0d7ca646f78">   90</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classFavorito.html#a79d893b15156a660ad61b0d7ca646f78">m_idPlanta</a>{0};</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;};</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="preprocessor">#endif // FAVORITO_H</span></div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div><div class="ttc" id="classFavorito_html_a9f0b43ffb79a931c1d52ce96f0e67a90"><div class="ttname"><a href="classFavorito.html#a9f0b43ffb79a931c1d52ce96f0e67a90">Favorito::getIdPlanta</a></div><div class="ttdeci">int getIdPlanta()</div><div class="ttdoc">Saber el id de la planta. </div><div class="ttdef"><b>Definition:</b> favorito.cpp:142</div></div>
+<div class="ttc" id="classFavorito_html_a2a1c0b70c9b644b675e10ea27e1556e3"><div class="ttname"><a href="classFavorito.html#a2a1c0b70c9b644b675e10ea27e1556e3">Favorito::find</a></div><div class="ttdeci">static std::list&lt; Planta &gt; find(int idUsuario)</div><div class="ttdoc">Busca todas las plantas que tiene en favoritos un usuario. </div><div class="ttdef"><b>Definition:</b> favorito.cpp:114</div></div>
+<div class="ttc" id="classFavorito_html_abceb6e2513bfaa92b735d0145546a210"><div class="ttname"><a href="classFavorito.html#abceb6e2513bfaa92b735d0145546a210">Favorito::toJSON</a></div><div class="ttdeci">JSON toJSON()</div><div class="ttdoc">Crea un JSON de la clase. </div><div class="ttdef"><b>Definition:</b> favorito.cpp:101</div></div>
+<div class="ttc" id="classFavorito_html_a79d893b15156a660ad61b0d7ca646f78"><div class="ttname"><a href="classFavorito.html#a79d893b15156a660ad61b0d7ca646f78">Favorito::m_idPlanta</a></div><div class="ttdeci">int m_idPlanta</div><div class="ttdoc">Id de la planta. </div><div class="ttdef"><b>Definition:</b> favorito.h:90</div></div>
+<div class="ttc" id="classnlohmann_1_1basic__json_html"><div class="ttname"><a href="classnlohmann_1_1basic__json.html">nlohmann::basic_json</a></div><div class="ttdoc">a class to store JSON values </div><div class="ttdef"><b>Definition:</b> json.hpp:2421</div></div>
+<div class="ttc" id="classFavorito_html"><div class="ttname"><a href="classFavorito.html">Favorito</a></div><div class="ttdoc">Clase para el manejo de los favoritos de los usuarios. </div><div class="ttdef"><b>Definition:</b> favorito.h:30</div></div>
+<div class="ttc" id="classFavorito_html_ae46fcb43e096664c8485b3deca7c4b8b"><div class="ttname"><a href="classFavorito.html#ae46fcb43e096664c8485b3deca7c4b8b">Favorito::m_idUsuario</a></div><div class="ttdeci">int m_idUsuario</div><div class="ttdoc">Id del usuario. </div><div class="ttdef"><b>Definition:</b> favorito.h:86</div></div>
+<div class="ttc" id="classFavorito_html_a06a76f68db70436ee8d79bce3ed2302a"><div class="ttname"><a href="classFavorito.html#a06a76f68db70436ee8d79bce3ed2302a">Favorito::getIdUsuario</a></div><div class="ttdeci">int getIdUsuario()</div><div class="ttdoc">Saber el id del usuario. </div><div class="ttdef"><b>Definition:</b> favorito.cpp:141</div></div>
+<div class="ttc" id="classFavorito_html_a7464ce687f8c52b34b624eb67244b858"><div class="ttname"><a href="classFavorito.html#a7464ce687f8c52b34b624eb67244b858">Favorito::check</a></div><div class="ttdeci">bool check()</div><div class="ttdoc">Comprueba si esa planta la tiene en favoritos el usuario. </div><div class="ttdef"><b>Definition:</b> favorito.cpp:17</div></div>
+<div class="ttc" id="classFavorito_html_ab79a65c60a346ad66624048c7bb9babd"><div class="ttname"><a href="classFavorito.html#ab79a65c60a346ad66624048c7bb9babd">Favorito::m_id</a></div><div class="ttdeci">int m_id</div><div class="ttdoc">Id favorito de la base de datos. </div><div class="ttdef"><b>Definition:</b> favorito.h:82</div></div>
+<div class="ttc" id="namespacenlohmann_html_a2bfd99e845a2e5cd90aeaf1b1431f474"><div class="ttname"><a href="namespacenlohmann.html#a2bfd99e845a2e5cd90aeaf1b1431f474">nlohmann::json</a></div><div class="ttdeci">basic_json&lt;&gt; json</div><div class="ttdoc">default JSON class </div><div class="ttdef"><b>Definition:</b> json.hpp:2445</div></div>
+<div class="ttc" id="classFavorito_html_a65ef8e6ab70f701c7d980aa794c15a5d"><div class="ttname"><a href="classFavorito.html#a65ef8e6ab70f701c7d980aa794c15a5d">Favorito::load</a></div><div class="ttdeci">void load(int idUsuario, int idPlanta)</div><div class="ttdoc">Carga un favorito de la base de datos a partir de un usuario y una planta. </div><div class="ttdef"><b>Definition:</b> favorito.cpp:64</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>

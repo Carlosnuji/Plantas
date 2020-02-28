@@ -107,22 +107,7 @@ JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
             if(mensaje["action"] == "ultimasBusquedas")
             {
 
-                std::cout << "Devolver ultimas búsquedas" << std::endl;
-                resultado["id"] = mensaje["id"];
-
-                std::list<Planta> lista = Planta::find("p");
-                int contador = 0;
-                for(Planta planta : lista)
-                {
-
-                    JSON plantaJSON = planta.toJSON();
-                    resultado["resultado"][contador] = plantaJSON;
-
-                    contador++;
-
-                }
-
-                return resultado;
+                return ultimasBusquedas(mensaje);
 
             } // end if
 
@@ -130,23 +115,7 @@ JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
             if(mensaje["action"] == "buscar")
             {
 
-                std::cout << "Devolver búsqueda" << std::endl;
-                resultado["id"] = mensaje["id"];
-                std::string buscar = mensaje["busqueda"];
-
-                std::list<Planta> lista = Planta::find(buscar);
-                int contador = 0;
-                for(Planta planta : lista)
-                {
-
-                    JSON plantaJSON = planta.toJSON();
-                    resultado["resultado"][contador] = plantaJSON;
-
-                    contador++;
-
-                }
-
-                return resultado;
+                return busquedaUsuario(mensaje);
 
             } // end if
 
@@ -165,17 +134,16 @@ JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
                 Usuario usuario(nombre, pass, email);
                 usuario.save();
 
-                /// 2. Generar Token y insert Tabla token
+                /// 2. Generar Token e insert Tabla token
                 Token token;
                 QString tokenString = token.generateToken();
                 token.insert(tokenString, usuario.getId());
 
-                /// 3. Enviar email y insert Tabla envio_email
+                /// 3. Enviar email e insert Tabla envio_email
                 Email e;
                 std::string tokn = tokenString.toUtf8().constData();
                 e.sendEmail(usuario.getEmail(),"Verificar email","https://localhost/?token=" + tokn);
                 e.insert(usuario.getId());
-
 
                 /// 4. Enviar JSON
                 JSON usuarioJSON = usuario.toJSON();
@@ -189,14 +157,7 @@ JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
             if(mensaje["action"] == "cargarUsuario")
             {
 
-                std::cout << "Cargar usuario" << std::endl;
-                resultado["id"] = mensaje["id"];
-
-                Usuario usuario = Usuario::load(mensaje["email"], mensaje["pass"]);
-                JSON usuarioJSON = usuario.toJSON();
-                resultado["resultado"][0] = usuarioJSON;
-
-                return resultado;
+                return cargarUsuario(mensaje);
 
             } // end if
 
@@ -204,14 +165,7 @@ JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
             if(mensaje["action"] == "cargarPlanta")
             {
 
-                std::cout << "Cargar planta" <<std::endl;
-                resultado["id"] = mensaje["id"];
-
-                Planta planta = Planta::load(mensaje["nombre"], mensaje["nombreCientifico"]);
-                JSON plantaJSON = planta.toJSON();
-                resultado["resultado"][0] = plantaJSON;
-
-                return resultado;
+                return cargarPlanta(mensaje);
 
             } // end if
 
@@ -219,15 +173,7 @@ JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
             if(mensaje["action"] == "queja")
             {
 
-                std::cout << "Responder queja" <<std::endl;
-                resultado["id"] = mensaje["id"];
-
-                int idUsuario = mensaje["idUsuario"];
-                std::string quejaValor = mensaje["queja"];
-                Queja queja(idUsuario, quejaValor);
-                queja.save();
-
-                return resultado;
+                return queja(mensaje);
 
             } // end if
 
@@ -235,16 +181,7 @@ JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
             if(mensaje["action"] == "checkLike")
             {
 
-                std::cout << "Check like" << std::endl;
-                resultado["id"] = mensaje["id"];
-
-                Planta planta = Planta::load(mensaje["nombrePlanta"], mensaje["nombreCientifico"]);
-                Favorito favorito(mensaje["idUsuario"], planta.getId());
-
-                bool check = favorito.check();
-                JSON favoritoJSON = favorito.toJSON();
-                favoritoJSON["check"] = check;
-                resultado["resultado"][0] = favoritoJSON;
+                return checkFavorito(mensaje);
 
             } // end if
 
@@ -252,14 +189,7 @@ JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
             if(mensaje["action"] == "cargarFavorito")
             {
 
-                std::cout << "Cargar favorito" << std::endl;
-                resultado["id"] = mensaje["id"];
-
-                Planta planta = Planta::load(mensaje["nombre"], mensaje["nombreCientifico"]);
-                Favorito favorito(0, 0);
-                favorito.load(mensaje["idUsuario"], planta.getId());
-
-                resultado["resultado"][0] = favorito.toJSON();
+                return cargarFavorito(mensaje);
 
             } // end if
 
@@ -267,20 +197,7 @@ JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
             if(mensaje["action"] == "listaFavoritos")
             {
 
-                std::cout << "Lista favoritos" << std::endl;
-                resultado["id"] = mensaje["id"];
-
-                std::list<Planta> lista = Favorito::find(mensaje["idUsuario"]);
-                int contador = 0;
-                for(Planta planta : lista)
-                {
-
-                    JSON plantaJSON = planta.toJSON();
-                    resultado["resultado"][contador] = plantaJSON;
-
-                    contador++;
-
-                }
+                return listaFavortitos(mensaje);
 
             } // end if
 
@@ -288,13 +205,7 @@ JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
             if(mensaje["action"] == "perfil")
             {
 
-                std::cout << "Perfil" << std::endl;
-                resultado["id"] = mensaje["id"];
-
-                Usuario usuario("", "", "");
-                usuario.load(mensaje["idUsuario"]);
-
-                resultado["resultado"][0] = usuario.toJSON();
+                return cargarPerfil(mensaje);
 
             } // end if
 
@@ -302,15 +213,7 @@ JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
             if(mensaje["action"] == "modificarUser")
             {
 
-                std::cout << "Modificar perfil" << std::endl;
-                resultado["id"] = mensaje["id"];
-
-                Usuario usuario("", "", "");
-                usuario.load(mensaje["idUsuario"]);
-
-                if(usuario.getNombre() != mensaje["nombre"]) usuario.update(mensaje["nombre"], mensaje["email"], 1);
-
-                resultado["resultado"][0] = usuario.toJSON();
+                return modificarPerfil(mensaje);
 
             }
 
@@ -318,15 +221,7 @@ JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
             if(mensaje["action"] == "checkToken")
             {
 
-                std::cout << "Comprobar token" <<std::endl;
-                resultado["id"] = mensaje["id"];
-
-                bool correct = Token::checkToken(mensaje["token"]);
-
-                JSON respuesta;
-                respuesta["tokenCorrect"] = correct;
-
-                resultado["resultado"][0] = respuesta;
+                return checkToken(mensaje);
 
             }
 
@@ -343,11 +238,219 @@ bool Servidor::exists(const JSON& json, const std::string& key)
     return json.find(key) != json.end();
 }
 
+JSON Servidor::ultimasBusquedas(const JSON& mensaje)
+{
 
+    JSON resultado;
 
+    std::cout << "Devolver ultimas búsquedas" << std::endl;
+    resultado["id"] = mensaje["id"];
 
+    std::list<Planta> lista = Planta::find("p");
+    unsigned long contador = 0;
+    for(Planta planta : lista)
+    {
 
+        JSON plantaJSON = planta.toJSON();
+        resultado["resultado"][contador] = plantaJSON;
 
+        contador++;
+    }
+
+    return resultado;
+
+}
+
+JSON Servidor::busquedaUsuario(const JSON& mensaje)
+{
+
+    JSON resultado;
+
+    std::cout << "Devolver búsqueda" << std::endl;
+    resultado["id"] = mensaje["id"];
+    std::string buscar = mensaje["busqueda"];
+
+    std::list<Planta> lista = Planta::find(buscar);
+    unsigned long contador = 0;
+    for(Planta planta : lista)
+    {
+
+        JSON plantaJSON = planta.toJSON();
+        resultado["resultado"][contador] = plantaJSON;
+
+        contador++;
+
+    }
+
+    return resultado;
+
+}
+
+JSON Servidor::cargarUsuario(const JSON& mensaje)
+{
+
+    JSON resultado;
+
+    std::cout << "Cargar usuario" << std::endl;
+    resultado["id"] = mensaje["id"];
+
+    Usuario usuario = Usuario::load(mensaje["email"], mensaje["pass"]);
+    JSON usuarioJSON = usuario.toJSON();
+    resultado["resultado"][0] = usuarioJSON;
+
+    return resultado;
+
+}
+
+JSON Servidor::cargarPlanta(const JSON& mensaje)
+{
+
+    JSON resultado;
+
+    std::cout << "Cargar planta" <<std::endl;
+    resultado["id"] = mensaje["id"];
+
+    Planta planta = Planta::load(mensaje["nombre"], mensaje["nombreCientifico"]);
+    JSON plantaJSON = planta.toJSON();
+    resultado["resultado"][0] = plantaJSON;
+
+    return resultado;
+
+}
+
+JSON Servidor::queja(const JSON& mensaje)
+{
+
+    JSON resultado;
+
+    std::cout << "Responder queja" <<std::endl;
+    resultado["id"] = mensaje["id"];
+
+    int idUsuario = mensaje["idUsuario"];
+    std::string quejaValor = mensaje["queja"];
+    Queja queja(idUsuario, quejaValor);
+    queja.save();
+
+    return resultado;
+
+}
+
+JSON Servidor::checkFavorito(const JSON& mensaje)
+{
+
+    JSON resultado;
+
+    std::cout << "Check like" << std::endl;
+    resultado["id"] = mensaje["id"];
+
+    Planta planta = Planta::load(mensaje["nombrePlanta"], mensaje["nombreCientifico"]);
+    Favorito favorito(mensaje["idUsuario"], planta.getId());
+
+    bool check = favorito.check();
+    JSON favoritoJSON = favorito.toJSON();
+    favoritoJSON["check"] = check;
+    resultado["resultado"][0] = favoritoJSON;
+
+    return resultado;
+
+}
+
+JSON Servidor::cargarFavorito(const JSON& mensaje)
+{
+
+    JSON resultado;
+
+    std::cout << "Cargar favorito" << std::endl;
+    resultado["id"] = mensaje["id"];
+
+    Planta planta = Planta::load(mensaje["nombre"], mensaje["nombreCientifico"]);
+    Favorito favorito(0, 0);
+    favorito.load(mensaje["idUsuario"], planta.getId());
+
+    resultado["resultado"][0] = favorito.toJSON();
+
+    return resultado;
+
+}
+
+JSON Servidor::listaFavortitos(const JSON& mensaje)
+{
+
+    JSON resultado;
+
+    std::cout << "Lista favoritos" << std::endl;
+    resultado["id"] = mensaje["id"];
+
+    std::list<Planta> lista = Favorito::find(mensaje["idUsuario"]);
+    unsigned long contador = 0;
+    for(Planta planta : lista)
+    {
+
+        JSON plantaJSON = planta.toJSON();
+        resultado["resultado"][contador] = plantaJSON;
+
+        contador++;
+
+    }
+
+    return resultado;
+
+}
+
+JSON Servidor::cargarPerfil(const JSON& mensaje)
+{
+
+    JSON resultado;
+
+    std::cout << "Perfil" << std::endl;
+    resultado["id"] = mensaje["id"];
+
+    Usuario usuario("", "", "");
+    usuario.load(mensaje["idUsuario"]);
+
+    resultado["resultado"][0] = usuario.toJSON();
+
+    return resultado;
+
+}
+
+JSON Servidor::modificarPerfil(const JSON& mensaje)
+{
+
+    JSON resultado;
+
+    std::cout << "Modificar perfil" << std::endl;
+    resultado["id"] = mensaje["id"];
+
+    Usuario usuario("", "", "");
+    usuario.load(mensaje["idUsuario"]);
+
+    if(usuario.getNombre() != mensaje["nombre"]) usuario.update(mensaje["nombre"], mensaje["email"], 1);
+
+    resultado["resultado"][0] = usuario.toJSON();
+
+    return resultado;
+
+}
+
+JSON Servidor::checkToken(const JSON& mensaje)
+{
+
+    JSON resultado;
+
+    std::cout << "Comprobar token" <<std::endl;
+    resultado["id"] = mensaje["id"];
+
+    bool correct = Token::checkToken(mensaje["token"]);
+
+    JSON respuesta;
+    respuesta["tokenCorrect"] = correct;
+
+    resultado["resultado"][0] = respuesta;
+
+    return resultado;
+
+}
 
 
 

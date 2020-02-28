@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.14"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Proyecto Plantas: Fichero Fuente email.h</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">Proyecto Plantas
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Generado por Doxygen 1.8.14 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'Buscar');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','Buscar');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div class="header">
+  <div class="headertitle">
+<div class="title">email.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef EMAIL_H</span></div><div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define EMAIL_H</span></div><div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;</div><div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div><div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div><div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &lt;QSqlQuery&gt;</span></div><div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#include &lt;QSqlRecord&gt;</span></div><div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div><div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="classEmail.html">   24</a></span>&#160;<span class="keyword">class </span><a class="code" href="classEmail.html">Email</a></div><div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;{</div><div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div><div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="keyword">public</span>:</div><div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <a class="code" href="classEmail.html">Email</a>();</div><div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEmail.html#a99139f4459cc13e6eec84f5f5103a3b4">sendEmail</a>(std::string toEmail, std::string subject, std::string texto);</div><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEmail.html#ac7c135583aca5f8fe4449584fdb965c7">insert</a>(<span class="keywordtype">int</span> idusuario);</div><div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div><div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="keyword">private</span>:</div><div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="classEmail.html#a6a75616b8c6b1c0b5c74d4e5e7d6c3ec">   50</a></span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classEmail.html#a6a75616b8c6b1c0b5c74d4e5e7d6c3ec">m_puerto</a>{0};</div><div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="classEmail.html#a843fa98cc6c059ad7e3c904548a291fc">   54</a></span>&#160;    std::string <a class="code" href="classEmail.html#a843fa98cc6c059ad7e3c904548a291fc">m_server</a>;</div><div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="classEmail.html#ab69d85f777de9020d7446d26da25d677">   58</a></span>&#160;    std::string <a class="code" href="classEmail.html#ab69d85f777de9020d7446d26da25d677">m_user</a>;</div><div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classEmail.html#a524ab5123b49c985e3b394cb8691f56a">   62</a></span>&#160;    std::string <a class="code" href="classEmail.html#a524ab5123b49c985e3b394cb8691f56a">m_password</a>;</div><div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classEmail.html#a67be6132b0bff56ae69285f61920b7fd">   66</a></span>&#160;    std::map&lt;std::string, std::string&gt; <a class="code" href="classEmail.html#a67be6132b0bff56ae69285f61920b7fd">m_propiedades</a>;</div><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEmail.html#a2401598564a3a74f565f121b7abb71ef">loadProperties</a>();</div><div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEmail.html#af0da507aeeec336d7fd3844c92fef8f5">readFile</a>();</div><div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classEmail.html#a0a3fc6a19ea73583a90f5a65fd362f88">processLine</a>(std::string line);</div><div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;};</div><div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;</div><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;<span class="preprocessor">#endif // EMAIL_H</span></div><div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;</div><div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;</div><div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;</div><div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;</div><div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;</div><div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;</div><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;</div><div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;</div><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;</div><div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div><div class="ttc" id="classEmail_html_a2401598564a3a74f565f121b7abb71ef"><div class="ttname"><a href="classEmail.html#a2401598564a3a74f565f121b7abb71ef">Email::loadProperties</a></div><div class="ttdeci">void loadProperties()</div><div class="ttdoc">Carga las propiedades del email. </div><div class="ttdef"><b>Definition:</b> email.cpp:53</div></div>
+<div class="ttc" id="classEmail_html_a843fa98cc6c059ad7e3c904548a291fc"><div class="ttname"><a href="classEmail.html#a843fa98cc6c059ad7e3c904548a291fc">Email::m_server</a></div><div class="ttdeci">std::string m_server</div><div class="ttdoc">Servidor al que se conecta para enviar el email. </div><div class="ttdef"><b>Definition:</b> email.h:54</div></div>
+<div class="ttc" id="classEmail_html"><div class="ttname"><a href="classEmail.html">Email</a></div><div class="ttdoc">Clase para poder crear Emails. </div><div class="ttdef"><b>Definition:</b> email.h:24</div></div>
+<div class="ttc" id="classEmail_html_a99139f4459cc13e6eec84f5f5103a3b4"><div class="ttname"><a href="classEmail.html#a99139f4459cc13e6eec84f5f5103a3b4">Email::sendEmail</a></div><div class="ttdeci">void sendEmail(std::string toEmail, std::string subject, std::string texto)</div><div class="ttdoc">Poder enviar un email via smtp. </div><div class="ttdef"><b>Definition:</b> email.cpp:28</div></div>
+<div class="ttc" id="classEmail_html_a0a3fc6a19ea73583a90f5a65fd362f88"><div class="ttname"><a href="classEmail.html#a0a3fc6a19ea73583a90f5a65fd362f88">Email::processLine</a></div><div class="ttdeci">void processLine(std::string line)</div><div class="ttdoc">Procesa cada linea del archivo de configuración. </div><div class="ttdef"><b>Definition:</b> email.cpp:65</div></div>
+<div class="ttc" id="classEmail_html_a524ab5123b49c985e3b394cb8691f56a"><div class="ttname"><a href="classEmail.html#a524ab5123b49c985e3b394cb8691f56a">Email::m_password</a></div><div class="ttdeci">std::string m_password</div><div class="ttdoc">Contraseña del usuario. </div><div class="ttdef"><b>Definition:</b> email.h:62</div></div>
+<div class="ttc" id="classEmail_html_a6a75616b8c6b1c0b5c74d4e5e7d6c3ec"><div class="ttname"><a href="classEmail.html#a6a75616b8c6b1c0b5c74d4e5e7d6c3ec">Email::m_puerto</a></div><div class="ttdeci">int m_puerto</div><div class="ttdoc">Puerto que utiliza. </div><div class="ttdef"><b>Definition:</b> email.h:50</div></div>
+<div class="ttc" id="classEmail_html_af0da507aeeec336d7fd3844c92fef8f5"><div class="ttname"><a href="classEmail.html#af0da507aeeec336d7fd3844c92fef8f5">Email::readFile</a></div><div class="ttdeci">void readFile()</div><div class="ttdoc">Lee el archivo de configuración de la base de datos. </div><div class="ttdef"><b>Definition:</b> email.cpp:77</div></div>
+<div class="ttc" id="classEmail_html_ab69d85f777de9020d7446d26da25d677"><div class="ttname"><a href="classEmail.html#ab69d85f777de9020d7446d26da25d677">Email::m_user</a></div><div class="ttdeci">std::string m_user</div><div class="ttdoc">Dirección de correo con la que se envia el email. </div><div class="ttdef"><b>Definition:</b> email.h:58</div></div>
+<div class="ttc" id="classEmail_html_ac7c135583aca5f8fe4449584fdb965c7"><div class="ttname"><a href="classEmail.html#ac7c135583aca5f8fe4449584fdb965c7">Email::insert</a></div><div class="ttdeci">void insert(int idusuario)</div><div class="ttdoc">Insertar en la tabla envio_email el email que hayamos enviado. </div><div class="ttdef"><b>Definition:</b> email.cpp:17</div></div>
+<div class="ttc" id="classEmail_html_a67be6132b0bff56ae69285f61920b7fd"><div class="ttname"><a href="classEmail.html#a67be6132b0bff56ae69285f61920b7fd">Email::m_propiedades</a></div><div class="ttdeci">std::map&lt; std::string, std::string &gt; m_propiedades</div><div class="ttdoc">Mapa donde se guardan las propiedades de la conexión con el servidor de email. </div><div class="ttdef"><b>Definition:</b> email.h:66</div></div>
+</div><!-- fragment --></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+Generado por &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.14
+</small></address>
+</body>
+</html>
