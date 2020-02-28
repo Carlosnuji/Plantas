@@ -37,6 +37,14 @@ que los métodos de las clases funcionen correctamente y devuelvan el valor espe
 - CSS Para darle diseño a la página.
 - JS Para interactuar con el servidor y enviar peticiones.
 
+## Gestión de errores
+
+Usando la herramienta cppcheck y el compilador durante la creación del proyecto he ido detectando errores que he ido
+solventando, algunos eran más sencillos y han sido rápidamente solucionados y otros han llevado más trabajo.
+Uno de los errores que tuve fue al leer el archivo de configuración de la base de datos el cual lo leia mal y no
+se conectaba a la misma, lo solucione creando un método que se encargará de leer de manera apropiada el archivo de configuración.
+Con ayuda de los test he podido detectar algunos errores en las selects o inserts en la base de datos.
+
 ## Contribuyendo
 
 Al contribuir a este repositorio, primero discuta el cambio que desea realizar a través de un problema, 

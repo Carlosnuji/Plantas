@@ -75,6 +75,15 @@ $(function() {
  <a href="classUsuario.html#details">Más...</a></p>
 
 <p><code>#include &lt;<a class="el" href="usuario_8h_source.html">usuario.h</a>&gt;</code></p>
+<div class="dynheader">
+Diagrama de herencias de Usuario</div>
+<div class="dyncontent">
+ <div class="center">
+  <img src="classUsuario.png" usemap="#Usuario_map" alt=""/>
+  <map id="Usuario_map" name="Usuario_map">
+<area href="classBaseDatos.html" alt="BaseDatos" shape="rect" coords="0,0,72,24"/>
+</map>
+ </div></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Métodos públicos</h2></td></tr>
@@ -87,12 +96,12 @@ Métodos públicos</h2></td></tr>
 <tr class="memitem:aa6274c43296b3fa971b5560c8a448441"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUsuario.html#aa6274c43296b3fa971b5560c8a448441">save</a> ()</td></tr>
 <tr class="memdesc:aa6274c43296b3fa971b5560c8a448441"><td class="mdescLeft">&#160;</td><td class="mdescRight">Guarda el usuario en la base de datos.  <a href="#aa6274c43296b3fa971b5560c8a448441">Más...</a><br /></td></tr>
 <tr class="separator:aa6274c43296b3fa971b5560c8a448441"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a582cfc5fb035575f66240d1784c50632"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUsuario.html#a582cfc5fb035575f66240d1784c50632">load</a> (int id)</td></tr>
-<tr class="memdesc:a582cfc5fb035575f66240d1784c50632"><td class="mdescLeft">&#160;</td><td class="mdescRight">Carga un usuario de la base de datos.  <a href="#a582cfc5fb035575f66240d1784c50632">Más...</a><br /></td></tr>
-<tr class="separator:a582cfc5fb035575f66240d1784c50632"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4753a9aa486222c1c28e14b2c228bbd1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUsuario.html#a4753a9aa486222c1c28e14b2c228bbd1">update</a> (std::string nombre, std::string email, int status)</td></tr>
-<tr class="memdesc:a4753a9aa486222c1c28e14b2c228bbd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actualiza las propiedades del usuario en la base de datos.  <a href="#a4753a9aa486222c1c28e14b2c228bbd1">Más...</a><br /></td></tr>
-<tr class="separator:a4753a9aa486222c1c28e14b2c228bbd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7cb468980669171fdd6cc34723bce864"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUsuario.html#a7cb468980669171fdd6cc34723bce864">load</a> (const int id)</td></tr>
+<tr class="memdesc:a7cb468980669171fdd6cc34723bce864"><td class="mdescLeft">&#160;</td><td class="mdescRight">Carga un usuario de la base de datos.  <a href="#a7cb468980669171fdd6cc34723bce864">Más...</a><br /></td></tr>
+<tr class="separator:a7cb468980669171fdd6cc34723bce864"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abccc47bddb1deac69920f4dcb7a44b97"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUsuario.html#abccc47bddb1deac69920f4dcb7a44b97">update</a> ()</td></tr>
+<tr class="memdesc:abccc47bddb1deac69920f4dcb7a44b97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Actualiza las propiedades del usuario en la base de datos.  <a href="#abccc47bddb1deac69920f4dcb7a44b97">Más...</a><br /></td></tr>
+<tr class="separator:abccc47bddb1deac69920f4dcb7a44b97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af72cadb2cfa815ef3318f2544d1df4ef"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUsuario.html#af72cadb2cfa815ef3318f2544d1df4ef">getId</a> ()</td></tr>
 <tr class="memdesc:af72cadb2cfa815ef3318f2544d1df4ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtener el id del usuario.  <a href="#af72cadb2cfa815ef3318f2544d1df4ef">Más...</a><br /></td></tr>
 <tr class="separator:af72cadb2cfa815ef3318f2544d1df4ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -108,6 +117,15 @@ Métodos públicos</h2></td></tr>
 <tr class="memitem:a2a025ece8614d5eb0123f6ecc0310d55"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classUsuario.html#a2a025ece8614d5eb0123f6ecc0310d55">getStatus</a> ()</td></tr>
 <tr class="memdesc:a2a025ece8614d5eb0123f6ecc0310d55"><td class="mdescLeft">&#160;</td><td class="mdescRight">Obtiene el status del usuario.  <a href="#a2a025ece8614d5eb0123f6ecc0310d55">Más...</a><br /></td></tr>
 <tr class="separator:a2a025ece8614d5eb0123f6ecc0310d55"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0346f021b8652f57e4d23f10a2d4876a"><td class="memItemLeft" align="right" valign="top"><a id="a0346f021b8652f57e4d23f10a2d4876a"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setNombre</b> (std::string nombre)</td></tr>
+<tr class="separator:a0346f021b8652f57e4d23f10a2d4876a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa46b53a37afb4aa3f7f6a5a1b3fe8528"><td class="memItemLeft" align="right" valign="top"><a id="aa46b53a37afb4aa3f7f6a5a1b3fe8528"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setEmail</b> (std::string email)</td></tr>
+<tr class="separator:aa46b53a37afb4aa3f7f6a5a1b3fe8528"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab32ffe5d8c36fa716b000bd58991e04e"><td class="memItemLeft" align="right" valign="top"><a id="ab32ffe5d8c36fa716b000bd58991e04e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setStatus</b> (int status)</td></tr>
+<tr class="separator:ab32ffe5d8c36fa716b000bd58991e04e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Métodos públicos estáticos</h2></td></tr>
@@ -290,20 +308,28 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 
 </div>
 </div>
-<a id="a582cfc5fb035575f66240d1784c50632"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a582cfc5fb035575f66240d1784c50632">&#9670;&nbsp;</a></span>load() <span class="overload">[2/2]</span></h2>
+<a id="a7cb468980669171fdd6cc34723bce864"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7cb468980669171fdd6cc34723bce864">&#9670;&nbsp;</a></span>load() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Usuario::load </td>
+          <td class="memname">bool Usuario::load </td>
           <td>(</td>
-          <td class="paramtype">int&#160;</td>
+          <td class="paramtype">const int&#160;</td>
           <td class="paramname"><em>id</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Carga un usuario de la base de datos. </p>
@@ -313,6 +339,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
   </table>
   </dd>
 </dl>
+
+<p>Reimplementado de <a class="el" href="classBaseDatos.html">BaseDatos</a>.</p>
 
 </div>
 </div>
@@ -355,6 +383,9 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">bool Usuario::save </td>
@@ -363,10 +394,17 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Guarda el usuario en la base de datos. </p>
 <p>Hace un insert en la base datos con las propiedades que le hayamos indicado al usuario. </p><dl class="section return"><dt>Devuelve</dt><dd>True si se ha guardado con éxito sino devolverá false. </dd></dl>
+
+<p>Reimplementado de <a class="el" href="classBaseDatos.html">BaseDatos</a>.</p>
 
 </div>
 </div>
@@ -390,36 +428,27 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
 
 </div>
 </div>
-<a id="a4753a9aa486222c1c28e14b2c228bbd1"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4753a9aa486222c1c28e14b2c228bbd1">&#9670;&nbsp;</a></span>update()</h2>
+<a id="abccc47bddb1deac69920f4dcb7a44b97"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abccc47bddb1deac69920f4dcb7a44b97">&#9670;&nbsp;</a></span>update()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Usuario::update </td>
+          <td class="memname">bool Usuario::update </td>
           <td>(</td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>nombre</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"></td><td>)</td>
           <td></td>
-          <td class="paramtype">std::string&#160;</td>
-          <td class="paramname"><em>email</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>status</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Actualiza las propiedades del usuario en la base de datos. </p>
@@ -431,6 +460,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class
   </table>
   </dd>
 </dl>
+
+<p>Reimplementado de <a class="el" href="classBaseDatos.html">BaseDatos</a>.</p>
 
 </div>
 </div>
