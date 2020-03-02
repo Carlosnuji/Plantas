@@ -12,6 +12,7 @@
 #include "email.h"
 #include "token.h"
 #include <QDebug>
+#include <QCoreApplication>
 
 int main()
 {
