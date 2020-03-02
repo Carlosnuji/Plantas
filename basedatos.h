@@ -12,7 +12,6 @@ class BaseDatos
 {
 public:
     BaseDatos();
-    virtual ~BaseDatos();
     virtual bool save();
     virtual bool load(const int id);
     virtual bool update();
