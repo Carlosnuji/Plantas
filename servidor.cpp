@@ -15,6 +15,8 @@ int Servidor::startServidor()
     //Crea un servidor
     ix::WebSocketServer server(this->m_puerto, "0.0.0.0");
 
+    std::cout << "Iniciando servidor en el puerto " << this->m_puerto << std::endl;
+
     ix::SocketTLSOptions webSocketTLS;
     webSocketTLS.tls = true;
     webSocketTLS.keyFile = "./cert/localhost/localhost.key";

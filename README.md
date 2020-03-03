@@ -18,6 +18,9 @@ Descarga el [IXWebSocket](https://github.com/machinezone/IXWebSocket).
 También se necesita una libreria para poder manejar JSON.
 Descarga [nlohmann/json](https://github.com/nlohmann/json).
 
+Se debe configurar el archivo de configuración de la base datos y el archivo de configuración del email para que funcione
+como una quiera,
+
 ## Ejecutando las pruebas/tests
 
 Para ejecutar las **pruebas** automatizadas del proyecto se debe entrar en la carpeta tests
