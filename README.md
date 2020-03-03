@@ -19,7 +19,10 @@ También se necesita una libreria para poder manejar JSON.
 Descarga [nlohmann/json](https://github.com/nlohmann/json).
 
 Se debe configurar el archivo de configuración de la base datos y el archivo de configuración del email para que funcione
-como una quiera,
+como uno quiera.
+
+Hay que importar la base de datos que se encuentra en la carpeta BaseDatos y se puede utilizar el usuario
+Carlos con el email carlos@gmail.com y contraseña carlos123
 
 ## Ejecutando las pruebas/tests
 

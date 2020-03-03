@@ -17,6 +17,7 @@ int Servidor::startServidor()
 
     std::cout << "Iniciando servidor en el puerto " << this->m_puerto << std::endl;
 
+    /*
     ix::SocketTLSOptions webSocketTLS;
     webSocketTLS.tls = true;
     webSocketTLS.keyFile = "./cert/localhost/localhost.key";
@@ -24,6 +25,7 @@ int Servidor::startServidor()
     webSocketTLS.caFile = "NONE";
 
     server.setTLSOptions(webSocketTLS);
+    */
 
     server.setOnConnectionCallback(
                 [this](std::shared_ptr<ix::WebSocket> webSocket,
