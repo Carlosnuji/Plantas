@@ -234,6 +234,8 @@ socket.onclose = function(event)
 socket.onerror = function(event)
 {
     console.log("Error");
+    document.getElementsByClassName("login")[0].style.display = "none";
+    document.getElementsByClassName("error")[0].style.display = "flex";
 };
 
 socket.onmessage = function(event)

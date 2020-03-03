@@ -364,6 +364,21 @@ div.search form, div.search form input{
 }
 /* Fin Section profile */
 
+/* Section error */
+.error{
+    display:none;
+    justify-content: center;
+    padding-top: 3rem;
+}
+.error ul li{
+    padding-bottom: 1rem;
+    font-weight: bold;
+}
+.error ul li:nth-child(1){
+    font-size: 3rem;
+}
+/* Fin Section error */
+
 
 #log, a, #atras, #reg, .busquedas article{
     cursor:pointer;
