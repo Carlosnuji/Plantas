@@ -77,7 +77,7 @@ void Email::processLine(std::string line)
 void Email::readFile()
 {
 
-    QString nombreArchivo = "../ServerPlantas/SimpleMail/mail.conf";
+    QString nombreArchivo = "./SimpleMail/mail.conf";
 
     if(QFile::exists(nombreArchivo) ){
 

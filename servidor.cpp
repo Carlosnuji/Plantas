@@ -17,8 +17,8 @@ int Servidor::startServidor()
 
     ix::SocketTLSOptions webSocketTLS;
     webSocketTLS.tls = true;
-    webSocketTLS.keyFile = "../ServerPlantas/cert/localhost/localhost.key";
-    webSocketTLS.certFile = "../ServerPlantas/cert/localhost/localhost.crt";
+    webSocketTLS.keyFile = "./cert/localhost/localhost.key";
+    webSocketTLS.certFile = "./cert/localhost/localhost.crt";
     webSocketTLS.caFile = "NONE";
 
     server.setTLSOptions(webSocketTLS);

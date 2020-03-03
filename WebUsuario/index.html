@@ -7,6 +7,7 @@
 	<title>Index</title>
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="css/responsive.css">
 	<link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/0070d8a8c5.js" crossorigin="anonymous"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -18,13 +19,17 @@
 	
 	<header>
 		
-		<span>
-			<i id="atras" class="fas fa-cannabis"></i>
+		<span id="atras">
+            <p>Home</p>
+			<i class="fas fa-home"></i>
 			<i id="like" class="far fa-star" onclick="checkLike()"></i>
 		</span>
 
-		<i class="fas fa-fan"></i>
-
+		<span>
+            <p>MY PROJECT</p>
+            <i class="fas fa-fan"></i>
+        </span>
+		
 		<span id="menuUser">
 			<i class="fas fa-search" onclick="buscar()"></i>
 			<i onclick="abrirMenu()" class="fas fa-ellipsis-v"></i>
@@ -114,7 +119,7 @@
                 </li>
                 
                 <li>
-                    <input type="button" value="Register" onclick="crearUsuario()">
+                    <input id="reg" type="button" value="Register" onclick="crearUsuario()">
                 </li>
             </ul>
         

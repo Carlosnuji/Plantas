@@ -21,6 +21,9 @@ header{
 	padding: 0.5rem;
 	height: 50px;
 }
+header span:nth-child(1) p, header span:nth-child(2) p{
+    display: none;
+}
 header span:nth-child(1){
 	justify-self: flex-start;
 }
@@ -362,7 +365,9 @@ div.search form, div.search form input{
 /* Fin Section profile */
 
 
-
+#log, a, #atras, #reg, .busquedas article{
+    cursor:pointer;
+}
 
 
 

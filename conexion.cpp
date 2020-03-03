@@ -24,7 +24,7 @@ void Conexion::processLine(std::string line)
 void Conexion::readFile()
 {
 
-    QString nombreArchivo = "../ServerPlantas/BaseDatos/baseDatos.conf";
+    QString nombreArchivo = "./BaseDatos/baseDatos.conf";
 
     if(QFile::exists(nombreArchivo) ){
 

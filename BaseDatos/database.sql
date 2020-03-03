@@ -84,6 +84,41 @@ ALTER SEQUENCE public."Quejas_idqueja_seq" OWNED BY public.queja.idqueja;
 
 
 --
+-- Name: envio_email; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.envio_email (
+    idenvio integer NOT NULL,
+    idusuario integer,
+    date date DEFAULT CURRENT_DATE
+);
+
+
+ALTER TABLE public.envio_email OWNER TO postgres;
+
+--
+-- Name: envio_email_idenvio_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.envio_email_idenvio_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.envio_email_idenvio_seq OWNER TO postgres;
+
+--
+-- Name: envio_email_idenvio_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.envio_email_idenvio_seq OWNED BY public.envio_email.idenvio;
+
+
+--
 -- Name: favorito; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -156,6 +191,42 @@ ALTER SEQUENCE public.planta_idplanta_seq OWNED BY public.planta.idplanta;
 
 
 --
+-- Name: token; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.token (
+    idtoken integer NOT NULL,
+    uuid text,
+    idusuario integer,
+    date date DEFAULT CURRENT_DATE
+);
+
+
+ALTER TABLE public.token OWNER TO postgres;
+
+--
+-- Name: token_idtoken_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.token_idtoken_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER TABLE public.token_idtoken_seq OWNER TO postgres;
+
+--
+-- Name: token_idtoken_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.token_idtoken_seq OWNED BY public.token.idtoken;
+
+
+--
 -- Name: usuario; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -163,7 +234,8 @@ CREATE TABLE public.usuario (
     idusuario integer NOT NULL,
     nombre character varying(50) NOT NULL,
     password text NOT NULL,
-    email character varying(100) NOT NULL
+    email character varying(100) NOT NULL,
+    status integer DEFAULT 0
 );
 
 
@@ -192,6 +264,13 @@ ALTER SEQUENCE public.usuario_idusuario_seq OWNED BY public.usuario.idusuario;
 
 
 --
+-- Name: envio_email idenvio; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.envio_email ALTER COLUMN idenvio SET DEFAULT nextval('public.envio_email_idenvio_seq'::regclass);
+
+
+--
 -- Name: favorito idfavorito; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -213,6 +292,13 @@ ALTER TABLE ONLY public.queja ALTER COLUMN idqueja SET DEFAULT nextval('public."
 
 
 --
+-- Name: token idtoken; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.token ALTER COLUMN idtoken SET DEFAULT nextval('public.token_idtoken_seq'::regclass);
+
+
+--
 -- Name: usuario idusuario; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -220,14 +306,21 @@ ALTER TABLE ONLY public.usuario ALTER COLUMN idusuario SET DEFAULT nextval('publ
 
 
 --
+-- Data for Name: envio_email; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.envio_email (idenvio, idusuario, date) FROM stdin;
+\.
+
+
+--
 -- Data for Name: favorito; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
 COPY public.favorito (idfavorito, idusuario, idplanta) FROM stdin;
-1	48	1
 4	50	1
-5	48	2
 6	50	2
+27	48	1
 \.
 
 
@@ -258,14 +351,23 @@ COPY public.queja (idqueja, idusuario, queja) FROM stdin;
 
 
 --
+-- Data for Name: token; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.token (idtoken, uuid, idusuario, date) FROM stdin;
+1	{a97f3f06-63c5-40de-b198-8bab0b48db9a}	48	2020-02-20
+\.
+
+
+--
 -- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.usuario (idusuario, nombre, password, email) FROM stdin;
-48	Carlos	$2a$06$4TkaGGjMSp.Sjo6Vl1Ou3e07wu9SaHXoDreBQ.IW65aqU6Jilw752	carlos@gmail.com
-49	Prueba	$2a$06$rKMPNj2.NXY4bme0utOnyudpDIrezLwEe2xS/Dnz/rq3Bt4oyaKyG	prueba@gmail.com
-50	Javier	$2a$06$ikD/1.vKO1G6UkQ5HAXa2.TBb7/kal.Mg.GmBcA39ZLZSehPjbbNa	javier@gmail.com
-51	Laura	$2a$06$MrgvASR94mDxV8mcKxkw.uL57TpV1KnraYV.l/dIBOjZojmdHvXde	laura@gmail.com
+COPY public.usuario (idusuario, nombre, password, email, status) FROM stdin;
+50	Javier	$2a$06$ikD/1.vKO1G6UkQ5HAXa2.TBb7/kal.Mg.GmBcA39ZLZSehPjbbNa	javier@gmail.com	0
+51	Laura	$2a$06$MrgvASR94mDxV8mcKxkw.uL57TpV1KnraYV.l/dIBOjZojmdHvXde	laura@gmail.com	0
+48	Carlos	$2a$06$4TkaGGjMSp.Sjo6Vl1Ou3e07wu9SaHXoDreBQ.IW65aqU6Jilw752	carlos@gmail.com	1
+49	Prueba	$2a$06$rKMPNj2.NXY4bme0utOnyudpDIrezLwEe2xS/Dnz/rq3Bt4oyaKyG	prueba@gmail.com	0
 \.
 
 
@@ -273,28 +375,42 @@ COPY public.usuario (idusuario, nombre, password, email) FROM stdin;
 -- Name: Quejas_idqueja_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public."Quejas_idqueja_seq"', 10, true);
+SELECT pg_catalog.setval('public."Quejas_idqueja_seq"', 11, true);
+
+
+--
+-- Name: envio_email_idenvio_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.envio_email_idenvio_seq', 1, false);
 
 
 --
 -- Name: favorito_idfavorito_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.favorito_idfavorito_seq', 6, true);
+SELECT pg_catalog.setval('public.favorito_idfavorito_seq', 27, true);
 
 
 --
 -- Name: planta_idplanta_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.planta_idplanta_seq', 3, true);
+SELECT pg_catalog.setval('public.planta_idplanta_seq', 4, true);
+
+
+--
+-- Name: token_idtoken_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+--
+
+SELECT pg_catalog.setval('public.token_idtoken_seq', 42, true);
 
 
 --
 -- Name: usuario_idusuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.usuario_idusuario_seq', 51, true);
+SELECT pg_catalog.setval('public.usuario_idusuario_seq', 101, true);
 
 
 --
@@ -346,6 +462,14 @@ ALTER TABLE ONLY public.usuario
 
 
 --
+-- Name: envio_email envio_email_idusuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.envio_email
+    ADD CONSTRAINT envio_email_idusuario_fkey FOREIGN KEY (idusuario) REFERENCES public.usuario(idusuario);
+
+
+--
 -- Name: favorito favorito_idplanta_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -367,6 +491,14 @@ ALTER TABLE ONLY public.favorito
 
 ALTER TABLE ONLY public.queja
     ADD CONSTRAINT queja_idusuario_fkey FOREIGN KEY (idusuario) REFERENCES public.usuario(idusuario) ON UPDATE CASCADE ON DELETE CASCADE;
+
+
+--
+-- Name: token token_idusuario_fkey; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.token
+    ADD CONSTRAINT token_idusuario_fkey FOREIGN KEY (idusuario) REFERENCES public.usuario(idusuario);
 
 
 --
