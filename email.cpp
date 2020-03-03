@@ -38,11 +38,11 @@ void Email::sendEmail(std::string toEmail, std::string subject, std::string text
     message.addTo(SimpleMail::EmailAddress(QString::fromUtf8(toEmail.c_str())));
     message.setSubject(QString::fromUtf8(subject.c_str()));
 
-    SimpleMail::MimeText text;
+    SimpleMail::MimeText *text = new SimpleMail::MimeText;
 
-    text.setText(QString::fromUtf8(texto.c_str()));
+    text->setText(QString::fromUtf8(texto.c_str()));
 
-    message.addPart(&text);
+    message.addPart(text);
 
     sender.sendMail(message);
 
