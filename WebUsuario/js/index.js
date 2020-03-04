@@ -164,6 +164,22 @@ function cargarFichaPlanta(item)
       descripcion.textContent = item.descripcion;
 }
 
+function salir()
+{
+    
+    document.getElementsByClassName("busquedas")[0].style.display = "none";
+    document.getElementsByClassName("login")[0].style.display = "block";
+    document.getElementsByClassName("register")[0].style.display = "none";
+    document.getElementsByClassName("data")[0].style.display = "none";
+    document.getElementsByClassName("quejas")[0].style.display = "none";
+    document.getElementsByClassName("listaFavoritos")[0].style.display = "none";
+    document.getElementsByClassName("profile")[0].style.display = "none";
+    document.getElementById("errorLogin").style.display = "none";
+    document.getElementById("verificado").style.display = "none";
+    document.getElementById("menuUser").style.display = "none";
+    
+}
+
 /*******************************   WEBSOCKETS   *******************************/
 
 //Conexión WebSocket con servidor
