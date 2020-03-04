@@ -1,7 +1,8 @@
 #ifndef SERVIDOR_H
 #define SERVIDOR_H
 
-#include<iostream>
+#include <iostream>
+#include <QDir>
 #include "ixwebsocket/IXWebSocketServer.h"
 #include "ixwebsocket/IXWebSocket.h"
 #include "ixwebsocket/IXConnectionState.h"

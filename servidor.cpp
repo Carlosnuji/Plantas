@@ -145,8 +145,12 @@ JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
 
                 /// 3. Enviar email e insert Tabla envio_email
                 Email e;
+
                 std::string tokn = tokenString.toUtf8().constData();
-                e.sendEmail(usuario.getEmail(),"Verificar email","https://localhost/?token=" + tokn);
+                QString path = QDir::currentPath();
+                QString indexPath = "file://" + path + "/WebUsuario/index.html?token=" + QString::fromUtf8(tokn.c_str());
+
+                e.sendEmail(usuario.getEmail(),"Verificar email", indexPath.toUtf8().constData());
                 e.insert(usuario.getId());
 
                 /// 4. Enviar JSON

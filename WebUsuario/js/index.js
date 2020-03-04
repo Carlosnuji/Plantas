@@ -229,12 +229,26 @@ socket.onopen = function(event)
 socket.onclose = function(event)
 {
     console.log("Conexión cerrada")
+    document.getElementsByClassName("busquedas")[0].style.display = "none";
+    document.getElementsByClassName("login")[0].style.display = "none";
+    document.getElementsByClassName("register")[0].style.display = "none";
+    document.getElementsByClassName("data")[0].style.display = "none";
+    document.getElementsByClassName("quejas")[0].style.display = "none";
+    document.getElementsByClassName("listaFavoritos")[0].style.display = "none";
+    document.getElementsByClassName("profile")[0].style.display = "none";
+    document.getElementsByClassName("error")[0].style.display = "flex";
 };
 
 socket.onerror = function(event)
 {
     console.log("Error");
+    document.getElementsByClassName("busquedas")[0].style.display = "none";
     document.getElementsByClassName("login")[0].style.display = "none";
+    document.getElementsByClassName("register")[0].style.display = "none";
+    document.getElementsByClassName("data")[0].style.display = "none";
+    document.getElementsByClassName("quejas")[0].style.display = "none";
+    document.getElementsByClassName("listaFavoritos")[0].style.display = "none";
+    document.getElementsByClassName("profile")[0].style.display = "none";
     document.getElementsByClassName("error")[0].style.display = "flex";
 };
 
@@ -332,6 +346,10 @@ function crearUsuario()
             if(usuario.id == 0)
             {
                 document.getElementById("errorSignIn").style.display = "flex";
+            }
+            else if(item.status == 0)
+            {
+                document.getElementById("registerEmail").style.display = "flex";
             }
             else
             {
