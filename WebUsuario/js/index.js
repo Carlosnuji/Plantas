@@ -437,6 +437,20 @@ function cargarUsuario(idUsuario)
                 document.getElementsByClassName("login")[0].style.display = "none";
                 document.getElementsByClassName("busquedas")[0].style.display = "block";
                 document.getElementById("menuUser").style.display = "block";
+                
+                var listaUsuarios = document.getElementById("listaUsuarios");
+                var listaQuejas = document.getElementById("listaQuejas");
+                if(item.admin == 1)
+                {
+                    listaUsuarios.parentElement.style.display = "block";
+                    listaQuejas.parentElement.style.display = "block";
+                }
+                else
+                {
+                    listaUsuarios.parentElement.style.display = "none";
+                    listaQuejas.parentElement.style.display = "none";
+                }
+                
             }
         }
         

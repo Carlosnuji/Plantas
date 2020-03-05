@@ -81,10 +81,12 @@ Usuario Usuario::load(std::string email, std::string password)
             QString pass = query.value("password").toString();
             QString email = query.value("email").toString();
             int status = query.value("status").toInt();
+            int admin = query.value("administrador").toInt();
 
             Usuario user(nombre.toUtf8().constData(), pass.toUtf8().constData(), email.toUtf8().constData());
             user.m_id = query.value("idusuario").toInt();
             user.m_status = status;
+            user.m_admin = admin;
             return user;
         }
 
@@ -111,12 +113,14 @@ bool Usuario::load(const int id)
         QString pass = query.value("password").toString();
         QString email = query.value("email").toString();
         int status = query.value("status").toInt();
+        int admin = query.value("administrador").toInt();
 
         m_id = query.value("idusuario").toInt();
         m_nombre = nombre.toUtf8().constData();
         m_password = pass.toUtf8().constData();
         m_email = email.toUtf8().constData();
         m_status = status;
+        m_admin = admin;
 
         return true;
 
@@ -162,6 +166,7 @@ JSON Usuario::toJSON()
     usuario["pass"] = m_password;
     usuario["email"] = m_email;
     usuario["status"] = m_status;
+    usuario["admin"] = m_admin;
 
     return usuario;
 
@@ -175,7 +180,8 @@ int Usuario::getStatus(){ return m_status; }
 
 void Usuario::setNombre(std::string nombre){ m_nombre = nombre; }
 void Usuario::setEmail(std::string email){ m_email = email; }
-void Usuario::setStatus(int status){ m_status= status; }
+void Usuario::setStatus(int status){ m_status = status; }
+void Usuario::setAdmin(int admin){m_admin = admin; }
 
 
 

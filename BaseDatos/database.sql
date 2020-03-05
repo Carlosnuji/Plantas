@@ -162,7 +162,7 @@ CREATE TABLE public.planta (
     nombre character varying(50) NOT NULL,
     nombrecientifico character varying(50) NOT NULL,
     descripcion character varying(50) NOT NULL,
-    imagen bytea
+    imagen text
 );
 
 
@@ -235,7 +235,8 @@ CREATE TABLE public.usuario (
     nombre character varying(50) NOT NULL,
     password text NOT NULL,
     email character varying(100) NOT NULL,
-    status integer DEFAULT 0
+    status integer DEFAULT 0,
+    administrador integer
 );
 
 
@@ -320,7 +321,7 @@ COPY public.envio_email (idenvio, idusuario, date) FROM stdin;
 COPY public.favorito (idfavorito, idusuario, idplanta) FROM stdin;
 4	50	1
 6	50	2
-27	48	1
+29	48	2
 \.
 
 
@@ -329,8 +330,8 @@ COPY public.favorito (idfavorito, idusuario, idplanta) FROM stdin;
 --
 
 COPY public.planta (idplanta, nombre, nombrecientifico, descripcion, imagen) FROM stdin;
-1	planta1	plantis1	descripcion	\\x2f686f6d652f7573756172696f2f50726f796563746f506c616e7461732f536572766572506c616e7461732f5765625573756172696f2f696d672f6172626f6c2e6a7067
-2	planta2	plantis2	una descripcion	\\x2f686f6d652f7573756172696f2f50726f796563746f506c616e7461732f536572766572506c616e7461732f5765625573756172696f2f696d672f6172626f6c2e6a7067
+1	planta1	plantis1	descripcion	arbol.jpg
+2	planta2	plantis2	una descripcion	margarita.jpg
 \.
 
 
@@ -363,11 +364,11 @@ COPY public.token (idtoken, uuid, idusuario, date) FROM stdin;
 -- Data for Name: usuario; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.usuario (idusuario, nombre, password, email, status) FROM stdin;
-50	Javier	$2a$06$ikD/1.vKO1G6UkQ5HAXa2.TBb7/kal.Mg.GmBcA39ZLZSehPjbbNa	javier@gmail.com	0
-51	Laura	$2a$06$MrgvASR94mDxV8mcKxkw.uL57TpV1KnraYV.l/dIBOjZojmdHvXde	laura@gmail.com	0
-48	Carlos	$2a$06$4TkaGGjMSp.Sjo6Vl1Ou3e07wu9SaHXoDreBQ.IW65aqU6Jilw752	carlos@gmail.com	1
-49	Prueba	$2a$06$rKMPNj2.NXY4bme0utOnyudpDIrezLwEe2xS/Dnz/rq3Bt4oyaKyG	prueba@gmail.com	0
+COPY public.usuario (idusuario, nombre, password, email, status, administrador) FROM stdin;
+50	Javier	$2a$06$ikD/1.vKO1G6UkQ5HAXa2.TBb7/kal.Mg.GmBcA39ZLZSehPjbbNa	javier@gmail.com	0	0
+51	Laura	$2a$06$MrgvASR94mDxV8mcKxkw.uL57TpV1KnraYV.l/dIBOjZojmdHvXde	laura@gmail.com	0	0
+49	Prueba	$2a$06$rKMPNj2.NXY4bme0utOnyudpDIrezLwEe2xS/Dnz/rq3Bt4oyaKyG	prueba@gmail.com	0	0
+48	Carlos	$2a$06$4TkaGGjMSp.Sjo6Vl1Ou3e07wu9SaHXoDreBQ.IW65aqU6Jilw752	carlos@gmail.com	1	1
 \.
 
 
@@ -389,7 +390,7 @@ SELECT pg_catalog.setval('public.envio_email_idenvio_seq', 1, false);
 -- Name: favorito_idfavorito_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.favorito_idfavorito_seq', 27, true);
+SELECT pg_catalog.setval('public.favorito_idfavorito_seq', 29, true);
 
 
 --

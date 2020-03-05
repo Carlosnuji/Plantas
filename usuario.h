@@ -108,6 +108,7 @@ public:
     void setNombre(std::string nombre);
     void setEmail(std::string email);
     void setStatus(int status);
+    void setAdmin(int admin);
 
 private:
     /**
@@ -130,6 +131,10 @@ private:
      * @brief Status del usuario.
      */
     int m_status{0};
+    /**
+     * @brief Saber si el usuario es administardor;
+     */
+    int m_admin{0};
 
 };
 
