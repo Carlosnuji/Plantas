@@ -35,6 +35,8 @@ bool Planta::save()
 Planta Planta::load(std::string nombre, std::string nombreCientifico)
 {
 
+    Planta planta("", "", "");
+
     QSqlQuery query;
     query.prepare("SELECT * FROM planta where nombre = :nombre AND nombrecientifico = :nomcien");
 
@@ -53,6 +55,8 @@ Planta Planta::load(std::string nombre, std::string nombreCientifico)
         planta.m_id = query.value("idplanta").toInt();
         return planta;
     }
+
+    return planta;
 
 }
 

@@ -485,6 +485,11 @@ function cargarListaFav()
     mensaje = new mensajeEspera(idMensaje);
     mensaje.funcionEjecutar = function(resultado)
     {
+        
+        var seccion = document.getElementsByClassName("listaFavoritos")[0];
+    
+        seccion.innerHTML = '';
+        
         resultado.forEach(mostrarUltimasBusquedas);
     
         function mostrarUltimasBusquedas(item, index)

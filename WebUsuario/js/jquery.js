@@ -68,6 +68,12 @@ $(document).ready(function(){
             $(".quejas").delay(800).fadeIn();
         }
         
+        if($(".listaFavoritos").is(":visible"))
+        {
+            $(".listaFavoritos").fadeOut();
+            $(".quejas").delay(800).fadeIn();
+        }
+        
     })
     
     // Botón listaFavoritos
@@ -87,6 +93,18 @@ $(document).ready(function(){
             $("#like").hide();
         }
         
+        if($(".profile").is(":visible"))
+        {
+            $(".profile").fadeOut();
+            $(".listaFavoritos").delay(800).fadeIn();
+        }
+        
+        if($(".quejas").is(":visible"))
+        {
+            $(".quejas").fadeOut();
+            $(".listaFavoritos").delay(800).fadeIn();
+        }
+        
     })
     
     // Botón perfil
@@ -104,6 +122,18 @@ $(document).ready(function(){
             $(".data").fadeOut();
             $(".profile").delay(800).fadeIn();
             $("#like").hide();
+        }
+        
+        if($(".listaFavoritos").is(":visible"))
+        {
+            $(".listaFavoritos").fadeOut();
+            $(".profile").delay(800).fadeIn();
+        }
+        
+        if($(".quejas").is(":visible"))
+        {
+            $(".quejas").fadeOut();
+            $(".profile").delay(800).fadeIn();
         }
         
     })
