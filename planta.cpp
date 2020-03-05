@@ -50,8 +50,10 @@ Planta Planta::load(std::string nombre, std::string nombreCientifico)
         QString nombre = query.value("nombre").toString();
         QString nombreCientifico = query.value("nombreCientifico").toString();
         QString descripcion = query.value("descripcion").toString();
+        QString imagen = query.value("imagen").toString();
 
         Planta planta(nombre.toUtf8().constData(), nombreCientifico.toUtf8().constData(), descripcion.toUtf8().constData());
+        planta.m_imagen = imagen.toUtf8().constData();
         planta.m_id = query.value("idplanta").toInt();
         return planta;
     }
@@ -75,11 +77,13 @@ bool Planta::load(const int id)
         QString nombre = query.value("nombre").toString();
         QString nombreCientifico = query.value("nombreCientifico").toString();
         QString descripcion = query.value("descripcion").toString();
+        QString imagen = query.value("imagen").toString();
 
         m_id = query.value("idplanta").toInt();
         m_nombre = nombre.toUtf8().constData();
         m_nombreCientifico = nombreCientifico.toUtf8().constData();
         m_descripcion = descripcion.toUtf8().constData();
+        m_imagen = imagen.toUtf8().constData();
 
         return true;
 
@@ -120,8 +124,10 @@ std::list<Planta> Planta::find(std::string nombre)
         QString nombre = query.value("nombre").toString();
         QString nombreCientifico = query.value("nombreCientifico").toString();
         QString descripcion = query.value("descripcion").toString();
+        QString imagen = query.value("imagen").toString();
 
         Planta planta(nombre.toUtf8().constData(), nombreCientifico.toUtf8().constData(), descripcion.toUtf8().constData());
+        planta.m_imagen = imagen.toUtf8().constData();
         planta.m_id = query.value("idplanta").toInt();
 
         listaPlantas.push_back(planta);
@@ -129,6 +135,20 @@ std::list<Planta> Planta::find(std::string nombre)
     }
 
     return listaPlantas;
+
+}
+
+std::string Planta::imgToBase64()
+{
+
+    QString img("./img/" + QString::fromUtf8(m_imagen.c_str()));
+    QFile* file = new QFile(img);
+    file->open(QIODevice::ReadOnly);
+    QByteArray image = file ->readAll();
+
+    QString base64 = QString(image.toBase64());
+
+    return base64.toUtf8().constData();
 
 }
 
@@ -140,6 +160,7 @@ JSON Planta::toJSON()
     planta["nombre"] = m_nombre;
     planta["nombreCientifico"] = m_nombreCientifico;
     planta["descripcion"] = m_descripcion;
+    planta["imagen"] = imgToBase64();
 
     return planta;
 

@@ -3,6 +3,9 @@
 
 #include <string>
 #include <list>
+#include <QByteArray>
+#include <QString>
+#include <QFile>
 #include "basedatos.h"
 #include "json.hpp"
 
@@ -78,6 +81,11 @@ public:
      */
     static std::list<Planta> find(std::string nombre);
     /**
+     * @brief Convierte la imagen en base64
+     * @return la imagen en base 64
+     */
+    std::string imgToBase64();
+    /**
      * @brief Devuelve el id de la planta;
      * @return Id de la planta.
      */
@@ -115,6 +123,10 @@ private:
      * @brief Descripción de la planta.
      */
     std::string m_descripcion{""};
+    /**
+     * @brief Imágen planta
+     */
+    std::string m_imagen;
 
 };
 

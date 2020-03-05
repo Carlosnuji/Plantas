@@ -58,7 +58,8 @@ function crearArticles(item, section)
             
     var figure = document.createElement("FIGURE");
     var imagen = document.createElement("IMG");
-    imagen.setAttribute("src", "img/margarita.jpg");
+    //imagen.setAttribute("src", "img/margarita.jpg");
+    imagen.setAttribute("src", "data:image/jpg;base64, " +item.imagen);
     figure.appendChild(imagen);
             
     var lista = document.createElement("UL");
@@ -159,10 +160,12 @@ function cargarFichaPlanta(item)
       var nombre = document.getElementById("nombrePlanta");
       var nombreCientifico = document.getElementById("nombreCientifico");
       var descripcion = document.getElementById("descPlanta");
+      var imagen = document.getElementById("plantaImg");
       
       nombre.textContent = item.nombre;
       nombreCientifico.textContent = item.nombreCientifico;
       descripcion.textContent = item.descripcion;
+      imagen.src = "data:image/jpg;base64, " +item.imagen;
 }
 
 function salir()
