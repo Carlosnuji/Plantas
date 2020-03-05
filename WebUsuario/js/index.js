@@ -53,6 +53,7 @@ function crearArticles(item, section)
 {
     
     var seccion = document.getElementsByClassName(section)[0];
+    
     var articulo = document.createElement("ARTICLE");
             
     var figure = document.createElement("FIGURE");
@@ -178,6 +179,22 @@ function salir()
     document.getElementById("verificado").style.display = "none";
     document.getElementById("menuUser").style.display = "none";
     
+    document.getElementById("email").value = "";
+    document.getElementById("pass").value = "";
+    
+}
+
+function crearTitulo(title, section)
+{
+    
+     var seccion = document.getElementsByClassName(section)[0];
+     
+     var titulo = document.createElement("H2");
+     titulo.innerHTML = title;
+     titulo.setAttribute("class", "titulo");
+     
+     seccion.appendChild(titulo);
+     
 }
 
 /*******************************   WEBSOCKETS   *******************************/
@@ -200,12 +217,14 @@ socket.onopen = function(event)
     mensaje = new mensajeEspera(idMensaje);
     mensaje.funcionEjecutar = function(resultado)
     {
+        
+        crearTitulo("Últimas búsquedas", "busquedas")
+        
         resultado.forEach(mostrarUltimasBusquedas);
     
         function mostrarUltimasBusquedas(item, index)
         {
             console.log(item);
-            
             crearArticles(item, "busquedas");
             
         }
@@ -318,6 +337,8 @@ function buscarNombre()
     {
         
         vaciarSection();
+        
+        crearTitulo("Búsqueda", "busquedas")
         
         resultado.forEach(mostarBusqueda);
         
@@ -489,6 +510,8 @@ function cargarListaFav()
         var seccion = document.getElementsByClassName("listaFavoritos")[0];
     
         seccion.innerHTML = '';
+        
+        crearTitulo("Lista favoritos", "listaFavoritos")
         
         resultado.forEach(mostrarUltimasBusquedas);
     

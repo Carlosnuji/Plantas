@@ -19,9 +19,9 @@
 	
 	<header>
 		
-		<span id="atras">
-            <p>Home</p>
-			<i class="fas fa-home"></i>
+		<span>
+            <p id="atras">Home</p>
+			<i id="atras" class="fas fa-home"></i>
 			<i id="like" class="far fa-star" onclick="checkLike()"></i>
 		</span>
 
@@ -192,9 +192,15 @@
                 </figure>
             </li>
             
-            <li><input name="nombreActual" id="nombreActual" value="Nombre"></li>
+            <li>
+                <label for="nombreActual">Nombre</label>
+                <input name="nombreActual" id="nombreActual" value="Nombre">
+            </li>
             
-            <li><input name="emailActual" id="emailActual" value="Email"></li>
+            <li>
+                <label for="emailActual">Email</label>
+                <input name="emailActual" id="emailActual" value="Email">
+            </li>
             
             <li><input type="button" value="Save" onclick="modificarPerfil()"></li>
             

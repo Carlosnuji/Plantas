@@ -10,6 +10,13 @@ body{
 a{
 	text-decoration: none;
 }
+section .titulo
+{
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 1.5rem;
+    color: #41ad49;
+}
 
 /* Header */
 header{
@@ -75,6 +82,7 @@ header #menuUser{
 }
 header span #like{
     display: none;
+    padding-left: 2rem;
 }
 /* Fin Header */
 
@@ -344,9 +352,16 @@ div.search input{
 }
 .profile ul li{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     padding-bottom: 1rem;
+}
+.profile ul li label {
+    width: 100%;
+    padding-bottom: 1rem;
+    color: #78c17d;
+    font-weight: bold;
 }
 .profile ul li figure{
     
