@@ -22,7 +22,8 @@ Se debe configurar el archivo de configuración de la base datos y el archivo de
 como uno quiera.
 
 Hay que importar la base de datos que se encuentra en la carpeta BaseDatos y se puede utilizar el usuario
-Carlos con el email carlos@gmail.com y contraseña carlos123
+Carlos con el email carlos@gmail.com y contraseña carlos123 como usuario administrador o el usuario
+User con el email user@gmail.com y contraseña user123 como usuario normal.
 
 ## Ejecutando las pruebas/tests
 

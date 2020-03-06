@@ -311,6 +311,7 @@ ALTER TABLE ONLY public.usuario ALTER COLUMN idusuario SET DEFAULT nextval('publ
 --
 
 COPY public.envio_email (idenvio, idusuario, date) FROM stdin;
+1	102	2020-03-06
 \.
 
 
@@ -357,6 +358,7 @@ COPY public.queja (idqueja, idusuario, queja) FROM stdin;
 
 COPY public.token (idtoken, uuid, idusuario, date) FROM stdin;
 1	{a97f3f06-63c5-40de-b198-8bab0b48db9a}	48	2020-02-20
+43	{3a7ef251-3bee-47d7-ba41-42079629dbbc}	102	2020-03-06
 \.
 
 
@@ -369,6 +371,7 @@ COPY public.usuario (idusuario, nombre, password, email, status, administrador) 
 51	Laura	$2a$06$MrgvASR94mDxV8mcKxkw.uL57TpV1KnraYV.l/dIBOjZojmdHvXde	laura@gmail.com	0	0
 49	Prueba	$2a$06$rKMPNj2.NXY4bme0utOnyudpDIrezLwEe2xS/Dnz/rq3Bt4oyaKyG	prueba@gmail.com	0	0
 48	Carlos	$2a$06$4TkaGGjMSp.Sjo6Vl1Ou3e07wu9SaHXoDreBQ.IW65aqU6Jilw752	carlos@gmail.com	1	1
+102	User	$2a$06$d06MmP9wKxQ17ZPJ0SRMf./NPs0PG6J4F7SX3F.gIWtU4URJtmMWK	user@gmail.com	1	0
 \.
 
 
@@ -383,7 +386,7 @@ SELECT pg_catalog.setval('public."Quejas_idqueja_seq"', 11, true);
 -- Name: envio_email_idenvio_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.envio_email_idenvio_seq', 1, false);
+SELECT pg_catalog.setval('public.envio_email_idenvio_seq', 1, true);
 
 
 --
@@ -404,14 +407,14 @@ SELECT pg_catalog.setval('public.planta_idplanta_seq', 4, true);
 -- Name: token_idtoken_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.token_idtoken_seq', 42, true);
+SELECT pg_catalog.setval('public.token_idtoken_seq', 43, true);
 
 
 --
 -- Name: usuario_idusuario_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.usuario_idusuario_seq', 101, true);
+SELECT pg_catalog.setval('public.usuario_idusuario_seq', 102, true);
 
 
 --

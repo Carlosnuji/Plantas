@@ -74,6 +74,7 @@ private:
     JSON cargarPerfil(const JSON& mensaje);
     JSON modificarPerfil(const JSON& mensaje);
     JSON checkToken(const JSON& mensaje);
+    JSON listaUsuarios(const JSON& mensaje);
 
 };
 

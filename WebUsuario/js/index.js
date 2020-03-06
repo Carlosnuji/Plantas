@@ -178,6 +178,7 @@ function salir()
     document.getElementsByClassName("quejas")[0].style.display = "none";
     document.getElementsByClassName("listaFavoritos")[0].style.display = "none";
     document.getElementsByClassName("profile")[0].style.display = "none";
+    document.getElementsByClassName("listaUsuarios")[0].style.display = "none";
     document.getElementById("errorLogin").style.display = "none";
     document.getElementById("verificado").style.display = "none";
     document.getElementById("menuUser").style.display = "none";
@@ -198,6 +199,35 @@ function crearTitulo(title, section)
      
      seccion.appendChild(titulo);
      
+}
+
+function addLista(item, section)
+{
+    
+    var seccion = document.getElementsByClassName(section)[0];
+    
+    var ul = seccion.firstElementChild;
+    
+    var li = document.createElement("LI");
+    
+    var nombre = document.createElement("H5");
+    nombre.innerHTML = item.nombre;
+    li.appendChild(nombre);
+    
+    var email = document.createElement("H5");
+    email.innerHTML = item.email;
+    li.appendChild(email);
+    
+    var status = document.createElement("H5");
+    status.innerHTML = item.status;
+    li.appendChild(status);
+    
+    var admin = document.createElement("H5");
+    admin.innerHTML = item.admin;
+    li.appendChild(admin);
+    
+    ul.appendChild(li);
+    
 }
 
 /*******************************   WEBSOCKETS   *******************************/
@@ -438,7 +468,7 @@ function cargarUsuario(idUsuario)
                 document.getElementsByClassName("busquedas")[0].style.display = "block";
                 document.getElementById("menuUser").style.display = "block";
                 
-                var listaUsuarios = document.getElementById("listaUsuarios");
+                var listaUsuarios = document.getElementById("listaUsers");
                 var listaQuejas = document.getElementById("listaQuejas");
                 if(item.admin == 1)
                 {
@@ -564,6 +594,8 @@ function perfil()
             
             document.getElementById("nombreActual").value = usuario.nombre;
             document.getElementById("emailActual").value = usuario.email;
+            if(item.admin == 1) document.getElementById("userAdmin").checked = true;
+            else document.getElementById("userAdmin").checked = false;
             
         }
     }
@@ -582,6 +614,33 @@ function modificarPerfil()
     var email = document.getElementById("emailActual").value;
     var obj = {action:"modificarUser", id:idMensaje, idUsuario:idUsuario, nombre:nombre, email:email};
     socket.send(JSON.stringify(obj));
+    
+}
+
+// Lista usuarios
+function listaUsuarios()
+{
+    
+    /// 1) Crear JSON que se envia al servidor
+    var idMensaje = dameId();
+    var obj = {action:"listaUsuarios", id:idMensaje};
+    socket.send(JSON.stringify(obj));
+    
+    /// 2) Crear el mensaje de respuesta que debe esperar el cliente y añadirlo a la lista de mensajes en espera
+    mensaje = new mensajeEspera(idMensaje);
+    mensaje.funcionEjecutar = function(resultado)
+    {
+        
+        resultado.forEach(mostrarUltimasBusquedas);
+    
+        function mostrarUltimasBusquedas(item, index)
+        {
+            
+            addLista(item, "listaUsuarios");
+            
+        }
+    }
+    mensajesEsperandoRespuesta.push(mensaje);
     
 }
 

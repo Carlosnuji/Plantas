@@ -157,6 +157,37 @@ bool Usuario::update()
 
 }
 
+std::list<Usuario> Usuario::find()
+{
+
+    std::list<Usuario> usuarios{};
+
+    QSqlQuery query;
+    query.prepare("SELECT * FROM usuario");
+    query.exec();
+
+    while (query.next())
+    {
+
+        QString nombre = query.value("nombre").toString();
+        QString pass = query.value("password").toString();
+        QString email = query.value("email").toString();
+        int status = query.value("status").toInt();
+        int admin = query.value("administrador").toInt();
+
+        Usuario user(nombre.toUtf8().constData(), pass.toUtf8().constData(), email.toUtf8().constData());
+        user.m_id = query.value("idusuario").toInt();
+        user.m_status = status;
+        user.m_admin = admin;
+
+        usuarios.push_back(user);
+
+    }
+
+    return usuarios;
+
+}
+
 JSON Usuario::toJSON()
 {
 

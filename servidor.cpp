@@ -233,6 +233,14 @@ JSON Servidor::nuevoMensajeJSON(const JSON &mensaje)
 
             }
 
+            /// Lista usuarios
+            if(mensaje["action"] == "listaUsuarios")
+            {
+
+                return listaUsuarios(mensaje);
+
+            }
+
         } // end if
 
     } // end if
@@ -455,6 +463,30 @@ JSON Servidor::checkToken(const JSON& mensaje)
     respuesta["tokenCorrect"] = correct;
 
     resultado["resultado"][0] = respuesta;
+
+    return resultado;
+
+}
+
+JSON Servidor::listaUsuarios(const JSON& mensaje)
+{
+
+    JSON resultado;
+
+    std::cout << "Lista usuarios" << std::endl;
+    resultado["id"] = mensaje["id"];
+
+    std::list<Usuario> usuarios = Usuario::find();
+    unsigned long contador = 0;
+    for(Usuario usuario : usuarios)
+    {
+
+        JSON usuarioJSON = usuario.toJSON();
+        resultado["resultado"][contador] = usuarioJSON;
+
+        contador++;
+
+    }
 
     return resultado;
 

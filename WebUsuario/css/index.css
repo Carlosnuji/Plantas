@@ -360,6 +360,16 @@ div.search input{
     align-items: center;
     padding-bottom: 1rem;
 }
+.profile ul li:nth-child(4)
+{
+    flex-direction: row;
+}
+.profile ul li:nth-child(4) input{
+    width: auto;
+}
+.profile ul li:nth-child(4) label{
+    padding: 0;
+}
 .profile ul li label {
     width: 100%;
     padding-bottom: 1rem;
@@ -378,7 +388,7 @@ div.search input{
     width: 100%;
     padding: 1rem 0;
 }
-.profile ul li:nth-child(4) input{
+.profile ul li:nth-child(5) input{
     background-color: #b6f6bb;
     color: darkgreen;
     border: 1px solid #83ce89;
@@ -401,6 +411,20 @@ div.search input{
 }
 /* Fin Section error */
 
+/* Section listaUsuarios */
+.listaUsuarios{
+    display: none;
+}
+.listaUsuarios ul li{
+    display: flex;
+}
+.listaUsuarios ul li h5{
+    width: 25%;
+    text-align:center;
+    padding: 1rem 0;
+    border: 1px solid #83ce89;
+}
+/* Fin Section listaUsuarios */
 
 #log, a, #atras, #reg, .busquedas article{
     cursor:pointer;

@@ -42,6 +42,12 @@ $(document).ready(function(){
                 $(".profile").fadeOut();
                 $(".busquedas").delay(800).fadeIn();
             }
+            
+            if($(".listaUsuarios").is(":visible"))
+            {
+                $(".listaUsuarios").fadeOut();
+                $(".busquedas").delay(800).fadeIn();
+            }
         }
         
     });
@@ -71,6 +77,12 @@ $(document).ready(function(){
         if($(".listaFavoritos").is(":visible"))
         {
             $(".listaFavoritos").fadeOut();
+            $(".quejas").delay(800).fadeIn();
+        }
+        
+        if($(".listaUsuarios").is(":visible"))
+        {
+            $(".listaUsuarios").fadeOut();
             $(".quejas").delay(800).fadeIn();
         }
         
@@ -105,6 +117,12 @@ $(document).ready(function(){
             $(".listaFavoritos").delay(800).fadeIn();
         }
         
+        if($(".listaUsuarios").is(":visible"))
+        {
+            $(".listaUsuarios").fadeOut();
+            $(".listaFavoritos").delay(800).fadeIn();
+        }
+        
     })
     
     // Botón perfil
@@ -134,6 +152,49 @@ $(document).ready(function(){
         {
             $(".quejas").fadeOut();
             $(".profile").delay(800).fadeIn();
+        }
+        
+        if($(".listaUsuarios").is(":visible"))
+        {
+            $(".listaUsuarios").fadeOut();
+            $(".profile").delay(800).fadeIn();
+        }
+        
+    })
+    
+    // Botón listaFavoritos
+    $("#listaUsers").click(function()
+    {
+        
+        if($(".busquedas").is(":visible"))
+        {
+            $(".busquedas").fadeOut();
+            $(".listaUsuarios").delay(800).fadeIn();
+        }
+        
+        if($(".data").is(":visible"))
+        {
+            $(".data").fadeOut();
+            $(".listaUsuarios").delay(800).fadeIn();
+            $("#like").hide();
+        }
+        
+        if($(".listaFavoritos").is(":visible"))
+        {
+            $(".listaFavoritos").fadeOut();
+            $(".listaUsuarios").delay(800).fadeIn();
+        }
+        
+        if($(".quejas").is(":visible"))
+        {
+            $(".quejas").fadeOut();
+            $(".listaUsuarios").delay(800).fadeIn();
+        }
+        
+        if($(".profile").is(":visible"))
+        {
+            $(".profile").fadeOut();
+            $(".listaUsuarios").delay(800).fadeIn();
         }
         
     })

@@ -81,6 +81,11 @@ public:
      */
     bool update();
     /**
+     * @brief Buscar todos los usuario de la base de datos.
+     * @return Lista usuarios.
+     */
+    static std::list<Usuario> find();
+    /**
      * @brief Obtener el id del usuario.
      * @return Id del usuario.
      */
